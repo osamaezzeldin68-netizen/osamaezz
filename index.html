@@ -339,6 +339,81 @@
             background-color: rgba(226, 232, 240, 0.9);
         }
 
+        /* --- شريط التنبيه التفاعلي الذكي (لا يؤثر على المساحات) --- */
+        .smart-toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(150px);
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            box-shadow: 0 10px 25px rgba(15, 44, 89, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 9999;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 700;
+            font-size: 1.05rem;
+            border: 2px solid var(--accent);
+            opacity: 0;
+            transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            pointer-events: none;
+            width: max-content;
+            max-width: 90vw;
+        }
+
+        .smart-toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .smart-toast .icon-toast {
+            color: var(--accent);
+            animation: click-pulse 1.5s infinite;
+        }
+
+        .smart-toast .close-toast {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 8px;
+            transition: background 0.2s;
+        }
+
+        .smart-toast .close-toast:hover {
+            background: var(--accent);
+            color: var(--primary);
+        }
+
+        /* --- نبض ضوئي لخيارات السؤال الأول لتعليم الطالب --- */
+        @keyframes subtle-glow {
+            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.6); }
+            70% { box-shadow: 0 0 0 8px rgba(212, 175, 55, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+        }
+
+        .tutorial-glow {
+            animation: subtle-glow 2s infinite;
+            border-color: var(--accent) !important;
+        }
+
+        @keyframes click-pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
         /* --- التوافق مع شاشات الموبايل (Responsive Design) --- */
         @media screen and (max-width: 850px) {
             body {
@@ -391,6 +466,14 @@
             .popup-content {
                 padding: 1.5rem;
             }
+            .smart-toast {
+                bottom: 20px;
+                padding: 10px 16px;
+                font-size: 0.9rem;
+                flex-wrap: wrap;
+                justify-content: center;
+                text-align: center;
+            }
         }
 
         /* Print Settings */
@@ -405,7 +488,8 @@
                 page-break-inside: avoid;
             }
             @page { margin: 0; size: A4 portrait; }
-            .popup-overlay, .floating-hint { display: none !important; }
+            .popup-overlay, .smart-toast { display: none !important; }
+            .tutorial-glow { animation: none !important; box-shadow: none !important; border-color: #cbd5e1 !important; }
             .watermark {
                  color: rgba(15, 44, 89, 0.06); 
                  -webkit-print-color-adjust: exact;
@@ -1902,17 +1986,38 @@
         </div>
     </div>
 
-    <!-- التنبيه العائم للمستخدم -->
-    <div class="floating-hint" id="interactiveHint">
-        <i data-lucide="mouse-pointer-click" class="w-6 h-6 icon-hint"></i>
-        <span>نموذج تفاعلي: اضغط على الخيارات أو مساحة الإجابة لمعرفة الحل والتعليل!</span>
-        <button class="close-hint" onclick="document.getElementById('interactiveHint').style.opacity='0'; setTimeout(()=>document.getElementById('interactiveHint').style.display='none', 400);" title="إغلاق التنبيه">
-            <i data-lucide="x-circle" class="w-5 h-5"></i>
+    <!-- رسالة التنبيه الذكية (تظهر وتختفي برمجياً) -->
+    <div class="smart-toast" id="smartToast">
+        <i data-lucide="mouse-pointer-click" class="w-6 h-6 icon-toast"></i>
+        <span>مرحباً بك! هذا النموذج تفاعلي، اضغط على الخيارات لمعرفة الإجابة الصحيحة.</span>
+        <button class="close-toast" onclick="hideSmartToast()" title="فهمت">
+            <i data-lucide="check" class="w-5 h-5"></i>
         </button>
     </div>
 
     <script>
         lucide.createIcons();
+
+        // إظهار التنبيه الذكي بعد ثانية من فتح الملف
+        setTimeout(() => {
+            document.getElementById('smartToast').classList.add('show');
+            
+            // إضافة تأثير النبض الضوئي لخيارات السؤال الأول فقط لتعليم الطالب
+            const firstOptions = document.querySelectorAll('.question-block:first-of-type .option-item');
+            firstOptions.forEach(opt => opt.classList.add('tutorial-glow'));
+        }, 1000);
+
+        function hideSmartToast() {
+            document.getElementById('smartToast').classList.remove('show');
+        }
+
+        // بمجرد ضغط الطالب على أي خيار، يتم إخفاء التنبيهات لأن الفكرة وصلته
+        document.body.addEventListener('click', function(e) {
+            if(e.target.closest('.option-item') || e.target.closest('.answer-area')) {
+                hideSmartToast();
+                document.querySelectorAll('.tutorial-glow').forEach(el => el.classList.remove('tutorial-glow'));
+            }
+        });
 
         function checkAnswer(isCorrect, message) {
             const popup = document.getElementById('feedbackPopup');
