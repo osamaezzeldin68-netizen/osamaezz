@@ -1,0 +1,1924 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>النموذج الاسترشادي الأول لغة عربية 2025/2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Aref+Ruqaa:wght@400;700&family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0f2c59;    
+            --secondary: #1e3a8a;  
+            --accent: #d4af37;     
+            --accent-light: #fef0c7;
+            --text-main: #1e293b;
+            --bg-page: #fafaf9;    
+            --bg-body: #e2e8f0;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            font-family: 'Cairo', sans-serif;
+            color: var(--text-main);
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+            margin: 0;
+            padding: 20px 0;
+        }
+
+        .font-amiri { font-family: 'Amiri', serif; }
+        .font-ruqaa { font-family: 'Aref Ruqaa', serif; }
+        
+        /* A4 Page Styling - Strictly Controlled */
+        .a4-page {
+            width: 210mm;
+            height: 297mm;
+            max-height: 297mm;
+            background-color: var(--bg-page);
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230f2c59' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            margin: 0 auto 20px auto;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            position: relative;
+            padding: 12mm 15mm; /* Optimized padding */
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden; /* Prevents absolutely any overflow */
+        }
+
+        /* Inner Content Border */
+        .page-border {
+            position: absolute;
+            top: 8mm; left: 8mm; right: 8mm; bottom: 8mm;
+            border: 1px solid rgba(15, 44, 89, 0.15);
+            outline: 2px solid rgba(212, 175, 55, 0.3);
+            outline-offset: -4px;
+            pointer-events: none;
+            z-index: 0;
+            border-radius: 2px;
+        }
+
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 0 4mm;
+            height: 100%;
+        }
+
+        /* Header */
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 6px;
+            margin-bottom: 12px;
+            position: relative;
+            flex-shrink: 0;
+        }
+        .page-header::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            right: 0;
+            width: 30%;
+            height: 2px;
+            background-color: var(--accent);
+        }
+
+        /* Text Elements (Compact & Precise) */
+        .passage-card {
+            background-color: #ffffff;
+            border-right: 4px solid var(--accent);
+            border-left: 1px solid #e2e8f0;
+            border-top: 1px solid #e2e8f0;
+            border-bottom: 1px solid #e2e8f0;
+            border-radius: 6px 0 0 6px;
+            padding: 14px 16px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+            margin-bottom: 12px;
+            position: relative;
+        }
+        .passage-quote-icon {
+            position: absolute;
+            top: -10px;
+            right: 15px;
+            background: white;
+            color: var(--accent);
+            padding: 0 4px;
+        }
+
+        .passage-text {
+            font-family: 'Amiri', serif;
+            font-size: 1.1rem; /* Adjusted for better fit */
+            line-height: 1.8;  /* Reduced gap between lines */
+            text-align: justify;
+            text-justify: inter-word;
+            margin-bottom: 0.6rem;
+            color: #1e293b;
+        }
+        .passage-text:last-child { margin-bottom: 0; }
+
+        /* Questions Layout */
+        .question-block {
+            margin-bottom: 12px; /* Tighter spacing */
+            page-break-inside: avoid;
+        }
+
+        .q-badge {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-bottom: 2px solid var(--accent);
+            width: 26px; height: 26px;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 6px; font-weight: bold; font-size: 1rem;
+            margin-left: 10px; flex-shrink: 0;
+            padding-top: 2px;
+        }
+
+        .q-text {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #1e293b;
+            line-height: 1.5;
+        }
+
+        /* Options */
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px; /* Tighter gap */
+            margin-top: 8px;
+            margin-right: 36px;
+        }
+        .options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 8px;
+            margin-right: 36px;
+        }
+
+        .option-item {
+            background: white;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            padding: 6px 10px;
+            display: flex;
+            align-items: center;
+            font-size: 1rem;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .option-item:hover {
+            border-color: var(--secondary);
+            background-color: #f0f9ff;
+        }
+        
+        .option-letter {
+            background: var(--bg-page);
+            color: var(--primary);
+            width: 24px; height: 24px;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 50%; font-weight: 800;
+            margin-left: 10px; flex-shrink: 0;
+            border: 1px solid #cbd5e1;
+            font-family: 'Cairo', sans-serif;
+            font-size: 0.9rem;
+        }
+
+        /* Elements */
+        .section-ribbon {
+            display: inline-flex;
+            align-items: center;
+            background: linear-gradient(90deg, var(--secondary), var(--primary));
+            color: white;
+            padding: 6px 16px 6px 12px;
+            border-radius: 6px 0 0 6px;
+            margin-bottom: 12px;
+            margin-right: -15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .poetry-block {
+            padding: 1rem 0;
+            margin: 1rem 1.5rem;
+            border-top: 1px dashed var(--accent);
+            border-bottom: 1px dashed var(--accent);
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.05), transparent);
+        }
+        .poetry-verse {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            font-family: 'Amiri', serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--primary);
+            padding: 0 0.5rem;
+        }
+        .poetry-verse span { width: 45%; text-align: center; }
+        .poetry-separator { color: var(--accent); font-size: 1rem; user-select: none; }
+
+        .quote-box {
+            background-color: #f8fafc;
+            border-right: 4px solid var(--secondary);
+            padding: 10px 14px;
+            border-radius: 6px;
+            margin: 10px 0;
+            font-family: 'Amiri', serif;
+            font-size: 1.05rem;
+            color: #334155;
+            line-height: 1.7;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        /* Footer strictly at bottom */
+        .page-footer {
+            margin-top: auto;
+            padding-top: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #64748b;
+            border-top: 1px solid #cbd5e1;
+            flex-shrink: 0;
+        }
+        
+        /* Popup Styling */
+        .popup-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(2px);
+        }
+        
+        .popup-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            position: relative;
+            transform: scale(0.95);
+            transition: transform 0.2s;
+        }
+        
+        .popup-overlay.show {
+            display: flex;
+        }
+        
+        .popup-overlay.show .popup-content {
+            transform: scale(1);
+        }
+        
+        .popup-close {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            cursor: pointer;
+            color: #94a3b8;
+        }
+        
+        .popup-close:hover {
+            color: #475569;
+        }
+
+        .correct-icon {
+            color: #10b981;
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 1rem auto;
+        }
+
+        .wrong-icon {
+            color: #ef4444;
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 1rem auto;
+        }
+        
+        .answer-area {
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        .answer-area:hover {
+            background-color: #e2e8f0;
+        }
+
+        /* Print Settings */
+        @media print {
+            body { background: white; margin: 0; padding: 0; }
+            .a4-page { 
+                margin: 0; 
+                box-shadow: none; 
+                width: 210mm; 
+                height: 297mm; 
+                page-break-after: always;
+                page-break-inside: avoid;
+            }
+            @page { margin: 0; size: A4 portrait; }
+            .popup-overlay { display: none !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Popup Container -->
+    <div id="feedbackPopup" class="popup-overlay">
+        <div class="popup-content text-center">
+            <i data-lucide="x" class="popup-close w-6 h-6" onclick="closePopup()"></i>
+            <div id="popupIcon"></div>
+            <h3 id="popupTitle" class="text-2xl font-bold mb-2"></h3>
+            <p id="popupMessage" class="text-gray-600 font-amiri text-lg leading-relaxed"></p>
+        </div>
+    </div>
+
+    <!-- ================== الصفحة 1 ================== -->
+    <div class="a4-page">
+        <div class="page-border"></div>
+        <div class="content-wrapper">
+            <div class="page-header">
+                <div class="flex items-center gap-3">
+                    <div class="bg-primary text-white p-1.5 rounded shadow-sm"><i data-lucide="book-open" class="w-4 h-4"></i></div>
+                    <div class="leading-tight">
+                        <div class="font-bold text-primary text-base">النموذج الاسترشادي الأول</div>
+                        <div class="text-xs text-accent font-bold">لغة عربية 2025/2026</div>
+                    </div>
+                </div>
+                <div class="font-bold text-gray-500 text-sm">الصفحة <span class="text-primary text-lg">1</span></div>
+            </div>
+
+            <div class="text-center mb-4 mt-2 relative">
+                <h1 class="font-ruqaa text-3xl text-primary mb-1">«النموذج الاسترشادي الأول لغة عربية»</h1>
+                <h2 class="text-base text-secondary font-bold inline-block px-8 relative">
+                    لامتحان الشهادة الثانوية العامة للعام الدراسي 2025/2026
+                    <div class="absolute bottom-[-6px] left-1/2 transform -translate-x-1/2 w-20 h-[3px] bg-accent rounded-full"></div>
+                </h2>
+            </div>
+
+            <div class="section-ribbon mt-2">
+                <i data-lucide="book" class="w-4 h-4 ml-2 text-accent"></i>
+                <h3 class="text-lg font-bold font-ruqaa mb-0">اقرأ، ثم أجب:</h3>
+            </div>
+
+            <div class="text-center mb-3">
+                <h4 class="text-xl font-bold text-accent font-ruqaa">( السرقات العلمية )</h4>
+            </div>
+
+            <div class="passage-card">
+                <div class="passage-quote-icon"><i data-lucide="quote" class="w-5 h-5 fill-current"></i></div>
+                <p class="passage-text">
+                    السرقة العلمية حسب تعريف المكتب الأمريكي للنزاهة البحثية، هي الاستيلاء على أفكار شخص آخر، أو إجراءاته، أو نتائجه، أو كلماته دون نسبتها إليه بشكل سليم، وتشير دراسة نشرت في عام 2015 إلى أن 1.7% من العلماء أقروا بإقدامهم على السرقة العلمية، وأن 30% منهم يعرفون زملاء لهم ارتكبوا هذا الجرم البحثي.
+                </p>
+                <p class="passage-text">
+                    ومن أنواع السرقات العلمية: الانتحال الحرفي، وذلك بأن يستخدم الباحث كامل العمل المنسوب لشخص آخر سواء بذكر أو من دون ذكر المرجع الأصلي، والنسخ واللصق من مصادر متعددة، وإعادة الصياغة بتغيير بعض الكلمات واستخدام بعض المرادفات، وعدم الاعتراف بالجهات الداعمة كجهات قدمت البيانات اللازمة للبحث.
+                </p>
+                <p class="passage-text">
+                    صحيح أن أدوات الذكاء الاصطناعي، من قبيل (تشات جي بي تي)، القائمة على خوارزميات تعرف بالنماذج اللغوية الكبيرة، يمكن أن توفر الوقت، وتجعل النصوص أوضح، وتقلل الفجوة الناشئة عن العوائق اللغوية، وهناك كثرة من الباحثين الذين يرون ألا ضير في الاستعانة بها في ظروف بعينها، شريطة الإفصاح عن استخدامها بشكل واضح لا لبس فيه.
+                </p>
+                <p class="passage-text">
+                    والتوصيف الذي وضعته الشبكة الأوروبية للنزاهة الأكاديمية التي تضم في عضويتها جامعات وأفرادا للاستخدام الممنوع أو غير المفصح عنه لأدوات إنتاج النصوص القائمة على الذكاء الاصطناعي هو: "توليد المحتوى بطريقة غير مصرح بها"؛ ما يعني أنها لم تجزم بأن هذا مما يدخل في باب السرقة العلمية وتقول فيبر-فولف: "السرقة العلمية - من وجهة نظري - هي سرقة أشياء يمكن نسبتها إلى شخص آخر معلوم".
+                </p>
+            </div>
+
+            <div class="page-footer">
+                <div class="flex items-center gap-2"><i data-lucide="award" class="w-4 h-4 text-accent"></i> <span>الثانوية العامة</span></div>
+                <div>يتبع الصفحة الثانية</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================== الصفحة 2 ================== -->
+    <div class="a4-page">
+        <div class="page-border"></div>
+        <div class="content-wrapper">
+            <div class="page-header">
+                <div class="flex items-center gap-3">
+                    <div class="bg-primary text-white p-1.5 rounded shadow-sm"><i data-lucide="book-open" class="w-4 h-4"></i></div>
+                    <div class="leading-tight">
+                        <div class="font-bold text-primary text-base">النموذج الاسترشادي الأول</div>
+                    </div>
+                </div>
+                <div class="font-bold text-gray-500 text-sm">الصفحة <span class="text-primary text-lg">2</span></div>
+            </div>
+
+            <div class="passage-card mt-2">
+                <p class="passage-text">
+                    وقد احتج عدد من المؤسسات الإعلامية وآحاد المؤلفين على ما يرون أنه انتهاك لحقوق الملكية الفكرية من قبل أنظمة الذكاء الاصطناعي ففي ديسمبر من عام 2023، رفعت صحيفة (ذا نيويورك تايمز) دعوى قضائية ضد شركة التكنولوجيا العملاقة (مايكروسوفت)، وشركة (أوبن إيه آي) وهي الشركة الأمريكية التي تقف وراء النموذج اللغوي الكبير المسمى (جي بي تي 4) الذي يقوم عليه ربوت الدردشة (تشات جي بي تي)، وفي هذه القضية المنظورة أمام المحاكم الأمريكية، ادعت الصحيفة على الشركتين المشار إليهما أنهما نسختا الملايين من مقالاتها لتغذية النماذج اللغوية الكبيرة التي باتت تنافس الصحيفة فيما تقدم من مواد صحفية، واشتملت الدعوى على أمثلة على توجيهات بعينها عند إدخالها إلى النموذج (جي بي تي 4)، يُنتج العديد من الفقرات المنقولة من مقالات الصحيفة نقلا حرفيا أو يكاد.
+                </p>
+            </div>
+
+            <div class="question-block mt-4">
+                <div class="flex items-start">
+                    <div class="q-badge">1</div>
+                    <p class="q-text">ما معنى كلمة : "النزاهة" في سياق الفقرة الأولى؟</p>
+                </div>
+                <div class="options-grid">
+                    <div class="option-item" onclick="checkAnswer(false, 'النزاهة تعني البعد عن السوء والأمانة، وليس التجمل.')"><span class="option-letter">أ</span> <span class="font-semibold text-gray-700">التجمل.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'النزاهة ترتبط بالأخلاق والأمانة، بينما الدقة ترتبط بالإتقان.')"><span class="option-letter">ب</span> <span class="font-semibold text-gray-700">الدقة.</span></div>
+                    <div class="option-item" onclick="checkAnswer(true, 'إجابة صحيحة! النزاهة في البحث العلمي تعني الأمانة العلمية في النقل والاقتباس.')"><span class="option-letter">ج</span> <span class="font-semibold text-gray-700">الأمانة.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'الثقة نتيجة للنزاهة، وليست مرادفاً مباشراً لها في هذا السياق.')"><span class="option-letter">د</span> <span class="font-semibold text-gray-700">الثقة.</span></div>
+                </div>
+            </div>
+
+            <div class="question-block mt-4">
+                <div class="flex items-start">
+                    <div class="q-badge">2</div>
+                    <p class="q-text">حدد المقصود بمصطلح السرقات العلمية.</p>
+                </div>
+                <div class="options-list">
+                    <div class="option-item" onclick="checkAnswer(true, 'إجابة صحيحة! وفقاً للفقرة الأولى، السرقة العلمية هي الاستيلاء على أفكار أو نتائج الآخرين دون نسبتها إليهم بشكل سليم.')"><span class="option-letter">أ</span> <span class="font-semibold text-gray-700">استخدام النتاج الفكري للآخرين وتجاهل نسبته إليهم.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'هذا ليس سرقة علمية، بل هو نشر وتداول للمعرفة.')"><span class="option-letter">ب</span> <span class="font-semibold text-gray-700">تداول الأفكار المشهورة بمعرفة علماء متخصصين.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'نقل العلوم من مصادر غير موثوقة يعتبر ضعفاً أكاديمياً وليس سرقة علمية بالضرورة.')"><span class="option-letter">ج</span> <span class="font-semibold text-gray-700">نقل العلوم من مصادر ليست محل ثقة عند العلماء.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'تبادل المعلومات لا يعتبر سرقة طالما لم يتم نسبها ظلماً لشخص آخر.')"><span class="option-letter">د</span> <span class="font-semibold text-gray-700">تبادل المعلومات والأفكار العلمية مجهولة المصدر.</span></div>
+                </div>
+            </div>
+
+            <div class="question-block mt-4">
+                <div class="flex items-start">
+                    <div class="q-badge">3</div>
+                    <p class="q-text">استنتج السبب الرئيس في وقوع بعض الباحثين في جريمة السرقة العلمية، في ضوء فهم الفقرة الثالثة.</p>
+                </div>
+                <div class="options-list">
+                    <div class="option-item" onclick="checkAnswer(false, 'الفقرة ذكرت أن أدوات الذكاء الاصطناعي تقلل الفجوة اللغوية، لكنه ليس السبب الرئيسي للسرقة.')"><span class="option-letter">أ</span> <span class="font-semibold text-gray-700">التغلب على الفجوة الناشئة عن العوائق اللغوية.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'تحسين الجودة هو أحد الفوائد المزعومة للذكاء الاصطناعي وليس دافعاً للسرقة بحد ذاته.')"><span class="option-letter">ب</span> <span class="font-semibold text-gray-700">تحسين جودة أبحاثهم بتقنيات الذكاء الاصطناعي.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'الأدوات متوفرة (مثل الذكاء الاصطناعي)، فالمشكلة ليست في غيابها.')"><span class="option-letter">ج</span> <span class="font-semibold text-gray-700">غياب الأدوات المساعدة في البحث العلمي.</span></div>
+                    <div class="option-item" onclick="checkAnswer(true, 'إجابة صحيحة! الفقرة الثالثة تشير إلى أن هذه الأدوات توفر الوقت، مما يدل على أن الرغبة في الإنجاز السريع قد تدفع للسرقة أو الاستخدام غير المفصح عنه.')"><span class="option-letter">د</span> <span class="font-semibold text-gray-700">الرغبة في إنجاز الأبحاث العلمية بسرعة.</span></div>
+                </div>
+            </div>
+
+            <div class="page-footer">
+                <div class="flex items-center gap-2"><i data-lucide="award" class="w-4 h-4 text-accent"></i> <span>الثانوية العامة</span></div>
+                <div>يتبع</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================== الصفحة 3 ================== -->
+    <div class="a4-page">
+        <div class="page-border"></div>
+        <div class="content-wrapper">
+            <div class="page-header">
+                <div class="flex items-center gap-3">
+                    <div class="bg-primary text-white p-1.5 rounded shadow-sm"><i data-lucide="book-open" class="w-4 h-4"></i></div>
+                    <div class="leading-tight">
+                        <div class="font-bold text-primary text-base">النموذج الاسترشادي الأول</div>
+                    </div>
+                </div>
+                <div class="font-bold text-gray-500 text-sm">الصفحة <span class="text-primary text-lg">3</span></div>
+            </div>
+
+            <div class="question-block mt-2">
+                <div class="flex items-start">
+                    <div class="q-badge">4</div>
+                    <p class="q-text">استنتج علاقة عبارة : "الانتحال الحرفي" بما قبلها في الفقرة الثانية.</p>
+                </div>
+                <div class="options-grid">
+                    <div class="option-item" onclick="checkAnswer(false, 'العبارة لا تمثل نتيجة لشيء قبلها.')"><span class="option-letter">أ</span> <span class="font-semibold text-gray-700">نتيجة.</span></div>
+                    <div class="option-item" onclick="checkAnswer(true, 'إجابة صحيحة! عبارة الانتحال الحرفي جاءت بعد قول الكاتب ومن أنواع السرقات العلمية، فهي تفصيل بعد إجمال.')"><span class="option-letter">ب</span> <span class="font-semibold text-gray-700">تفصيل.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'التوضيح يكون لشيء مبهم، وهنا العبارة تعدد الأنواع.')"><span class="option-letter">ج</span> <span class="font-semibold text-gray-700">توضيح.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'التعليل يعني ذكر السبب، وهنا يذكر الأنواع وليس الأسباب.')"><span class="option-letter">د</span> <span class="font-semibold text-gray-700">تعليل.</span></div>
+                </div>
+            </div>
+
+            <div class="question-block mt-4">
+                <div class="flex items-start">
+                    <div class="q-badge">5</div>
+                    <p class="q-text">هات - من الموضوع - ما يثبت إقدام كثير من الباحثين على السرقة العلمية.</p>
+                </div>
+                <div class="options-list">
+                    <div class="option-item" onclick="checkAnswer(true, 'إجابة صحيحة! هذه النسبة تدل بوضوح على انتشار ومعرفة الباحثين بوقوع زملائهم في هذه الجريمة.')"><span class="option-letter">أ</span> <span class="font-semibold text-gray-700">"30% من العلماء يعرفون زملاء لهم ارتكبوا هذا الجرم البحثي".</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'هذا دليل على انتهاك حقوق الملكية من قبل الشركات، وليس دليلاً على إقدام الباحثين أنفسهم.')"><span class="option-letter">ب</span> <span class="font-semibold text-gray-700">"رفعت صحيفة (ذا نيويورك تايمز) دعوى قضائية ضد مايكروسوفت".</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'هذا يعتبر نوعاً من أنواع السرقة وليس دليلاً على إقدام الكثيرين عليها.')"><span class="option-letter">ج</span> <span class="font-semibold text-gray-700">"عدم الاعتراف بالجهات الداعمة كجهات قدمت البيانات اللازمة للبحث".</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'هذا يصف طريقة عمل النماذج اللغوية، وليس سلوك الباحثين.')"><span class="option-letter">د</span> <span class="font-semibold text-gray-700">"ينتج العديد من الفقرات المنقولة من مقالات الصحيفة نقلا حرفيا أو يكاد".</span></div>
+                </div>
+            </div>
+
+            <div class="question-block mt-4">
+                <div class="flex items-start">
+                    <div class="q-badge">6</div>
+                    <p class="q-text">توقع - في ضوء فهم الموضوع - ماذا سيحدث إذا استمر الاستخدام غير المنضبط لأنظمة الذكاء الاصطناعي في توليد المحتوى.</p>
+                </div>
+                <div class="options-list">
+                    <div class="option-item" onclick="checkAnswer(false, 'الاستخدام غير المنضبط سيؤدي إلى العكس تماماً.')"><span class="option-letter">أ</span> <span class="font-semibold text-gray-700">تتمكن المؤسسات الإعلامية من الحفاظ على حقوق الملكية الفكرية.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'الاستخدام غير المنضبط (السرقة وتوليد المحتوى) سيؤدي إلى تراجع الجودة والموثوقية.')"><span class="option-letter">ب</span> <span class="font-semibold text-gray-700">تتحسن جودة الأبحاث العلمية بشكل ملحوظ في مختلف المجالات.</span></div>
+                    <div class="option-item" onclick="checkAnswer(true, 'إجابة صحيحة! كما حدث مع صحيفة نيويورك تايمز، الاستمرار في هذا الانتهاك سيؤدي حتماً إلى مزيد من النزاعات القانونية.')"><span class="option-letter">ج</span> <span class="font-semibold text-gray-700">تتصاعد القضايا القانونية ضد الشركات المالكة لتلك الأنظمة.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'لا يوجد علاقة مباشرة بين الاستخدام غير المنضبط وتقليل الحاجة للدعم الفني.')"><span class="option-letter">د</span> <span class="font-semibold text-gray-700">تقل حاجات الباحثين إلى الدعم الفني في الأبحاث المستقبلية.</span></div>
+                </div>
+            </div>
+
+            <div class="question-block mt-4">
+                <div class="flex items-start">
+                    <div class="q-badge">7</div>
+                    <p class="q-text">هات - من الفقرة السابقة - أربعة أدلة تؤكد انتهاك حقوق الملكية الفكرية بواسطة الذكاء الاصطناعي.</p>
+                </div>
+                <div class="h-28 mt-3 border-2 border-dashed border-gray-300 rounded-lg bg-gray-50 flex justify-center items-center text-gray-400 font-amiri mr-10 shadow-inner answer-area" onclick="showAnswer7()">
+                    (مساحة مخصصة لإجابة الطالب)
+                </div>
+            </div>
+
+            <div class="page-footer">
+                <div class="flex items-center gap-2"><i data-lucide="award" class="w-4 h-4 text-accent"></i> <span>الثانوية العامة</span></div>
+                <div>يتبع</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================== الصفحة 4 ================== -->
+    <div class="a4-page">
+        <div class="page-border"></div>
+        <div class="content-wrapper">
+            <div class="page-header">
+                <div class="flex items-center gap-3">
+                    <div class="bg-primary text-white p-1.5 rounded shadow-sm"><i data-lucide="book-open" class="w-4 h-4"></i></div>
+                    <div class="leading-tight">
+                        <div class="font-bold text-primary text-base">النموذج الاسترشادي الأول</div>
+                    </div>
+                </div>
+                <div class="font-bold text-gray-500 text-sm">الصفحة <span class="text-primary text-lg">4</span></div>
+            </div>
+
+            <div class="section-ribbon mt-2">
+                <i data-lucide="align-right" class="w-4 h-4 ml-2 text-accent"></i>
+                <h3 class="text-lg font-bold font-ruqaa mb-0">مما كتبه أحمد أمين (بتصرف)</h3>
+            </div>
+
+            <div class="passage-card">
+                <div class="passage-quote-icon"><i data-lucide="quote" class="w-5 h-5 fill-current"></i></div>
+                <p class="passage-text">
+                    كانت حارتنا تشمل ثلاث طبقات، فالغني من الطبقة العليا كان شيئًا معممًا، هو نائب المحكمة العليا الشرعية وسيد الحارة، إذا حضر من عمله تأدب أهلها، فلا ترفع نساء الطبقة الدنيا أصواتهن، وكثيرًا ما يجتمع في منظرته أبي وبعض أهل العلم يتدارسون المسائل الفقهية، وفي يوم المحمل أو الاحتفال بالمولد النبوي يلبس الشيخ «فرجية» مقصبة، مذهبة، ويركب بغلة، ويذهب بها إلى مكان الاحتفال.
+                </p>
+                <p class="passage-text">
+                    أما الطبقة الوسطى، فكانت تتألف من موظفين في الدواوين هذا كاتب في ديوان الأوقاف، وهذا كاتب في الدفترخانة، وبيوت الطبقة الدنيا يسكنها بناء أو مبيض أو خياط .. إلخ، وهؤلاء كثيرو الأولاد بؤساء ولا يشعرون ببؤسهم، يعيشون أغلب أيامهم على الطعمية والفول المدمس، وقليلا ما يستطيعون أن يطبخوا، كما أن أولادهم لا يُعلمون في كتاب ولا مدرسة.
+                </p>
+                <p class="passage-text">
+                    ولكن مع اختلاف هذه الطبقات فقد كنا - نحن الأطفال - ديمقراطيين، لا نقيم كبير وزن لغنى ولا فقر، ولا تعلم ولا جهل، فكنا نلعب سواسية، ونتخاطب بلغة واحدة ليس فيها تكبر ولا ضعة، وكان أحب أصدقائي إلي ابن كاتب في الدفترخانة، وابن صاحب مقهى، وابن فقيه كفيف يقرأ في البيوت كل يوم صباحًا.
+                </p>
+                <p class="passage-text">
+                    كانت نسبة المواليد في الحارة نسبة عكسية مع الطبقات، فأفقر الطبقات أكثرها عددًا؛ تلد سيدة ستة أو ثمانية أو عشرة، والبيت الغني الوحيد ليس به ولد، وكلما كثر عدد المواليد كثر عدد الوفيات، فالحالة الصحية أسوأ ما يكون، لا عناية بنظافة ماء، ولا بنظافة أكل، وهم لا يعرفون طبيبًا، وإنما يمرض المريض فيعالجه كل زائر وزائرة، كل يصف دواء من عند العطار جربه فنجح، والمريض تحت رحمة القدر، وقد يصاب أحد بالحمى فيزوره كل من أراد، ويسلم عليه ويجلس بجانبه طويلا، ويحدثه طويلا، فتكون العدوى أمرا سهلا ميسورًا، ولذلك كان كثيرًا ما يتخطف الموت أصدقائي من الأطفال حولي كانت الحارة وما حولها مدرسة لي تعلمت منها اللغة العامية القاهرية الصميمة، وتعلمت منها كل العادات والتقاليد.
+                </p>
+            </div>
+
+            <div class="question-block mt-3">
+                <div class="flex items-start">
+                    <div class="q-badge">8</div>
+                    <p class="q-text">ما الذي منح الشيخ المعمم السيادة في الحارة؟</p>
+                </div>
+                <div class="options-grid">
+                    <div class="option-item" onclick="checkAnswer(true, 'إجابة صحيحة! الغنى المادي (الطبقة العليا) والوظيفة المرموقة (نائب المحكمة الشرعية) هما مصدر سيادته في الحارة.')"><span class="option-letter">أ</span> <span class="font-semibold text-gray-700">المال الوفير والوظيفة المرموقة.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'تأدب أهل الحارة هو نتيجة لسيادته ومكانته، وليس السبب الذي منحه السيادة.')"><span class="option-letter">ج</span> <span class="font-semibold text-gray-700">تأدب أهل الحارة في حضرته.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'مدارسة المسائل كانت تحدث في منظرته كأحد مظاهر سيادته وعلمه، وليست السبب المباشر المذكور للسيادة في بداية الفقرة.')"><span class="option-letter">ب</span> <span class="font-semibold text-gray-700">مدارسة المسائل الفقهية مع العلماء.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'ارتداء الثياب المقصبة بالذهب هو من مظاهر احتفاله في المناسبات، وليس سبب سيادته.')"><span class="option-letter">د</span> <span class="font-semibold text-gray-700">ارتداء الثياب المقصبة بالذهب.</span></div>
+                </div>
+            </div>
+
+            <div class="page-footer">
+                <div class="flex items-center gap-2"><i data-lucide="award" class="w-4 h-4 text-accent"></i> <span>الثانوية العامة</span></div>
+                <div>يتبع</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================== الصفحة 5 ================== -->
+    <div class="a4-page">
+        <div class="page-border"></div>
+        <div class="content-wrapper">
+            <div class="page-header">
+                <div class="flex items-center gap-3">
+                    <div class="bg-primary text-white p-1.5 rounded shadow-sm"><i data-lucide="book-open" class="w-4 h-4"></i></div>
+                    <div class="leading-tight">
+                        <div class="font-bold text-primary text-base">النموذج الاسترشادي الأول</div>
+                    </div>
+                </div>
+                <div class="font-bold text-gray-500 text-sm">الصفحة <span class="text-primary text-lg">5</span></div>
+            </div>
+
+            <div class="question-block mt-2">
+                <div class="flex items-start">
+                    <div class="q-badge">9</div>
+                    <p class="q-text">بم وصف الكاتب الطبقة الفقيرة في الحارة في ضوء فهمك الفقرة الأخيرة؟</p>
+                </div>
+                <div class="options-list">
+                    <div class="option-item" onclick="checkAnswer(false, 'الكاتب ذكر العكس تماماً، حيث قال: كما أن أولادهم لا يُعلمون في كتاب ولا مدرسة.')"><span class="option-letter">أ</span> <span class="font-semibold text-gray-700">مهتمة بتعليم أبنائها بالكتاتيب والمدارس.</span></div>
+                    <div class="option-item" onclick="checkAnswer(true, 'إجابة صحيحة! الكاتب ربط بوضوح بين كثرة المواليد لديهم وكثرة الوفيات وسوء الحالة الصحية وانعدام النظافة.')"><span class="option-letter">ب</span> <span class="font-semibold text-gray-700">كثرة وفيات الأطفال لغياب الرعاية الصحية.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'الطبقات كانت منعزلة في تفاصيل حياتها، وكان التعاون والمساواة مقتصرين على الأطفال فقط.')"><span class="option-letter">ج</span> <span class="font-semibold text-gray-700">متعاونة مع باقي الطبقات الاجتماعية في الحارة.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'الكاتب وصف تداويهم بالعشوائية والاعتماد على وصفات العطار وأن المريض تحت رحمة القدر، وليس التميز في العلاج.')"><span class="option-letter">د</span> <span class="font-semibold text-gray-700">متميزة في وصف العلاج المناسب للمرضى.</span></div>
+                </div>
+            </div>
+
+            <div class="question-block mt-4">
+                <div class="flex items-start">
+                    <div class="q-badge">10</div>
+                    <p class="q-text">استنتج المغزى من قوله : "المريض تحت رحمة القدر" في ضوء فهمك الفقرة الأخيرة.</p>
+                </div>
+                <div class="options-list">
+                    <div class="option-item" onclick="checkAnswer(false, 'وصف الزوار لأدوية عشوائية دون علم يعكس الفوضى والجهل وليس العناية الطبية السليمة.')"><span class="option-letter">أ</span> <span class="font-semibold text-gray-700">يبين شدة العناية التي يوليها الزائرون للمرضى.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'رغم وجود الترابط بزيارة المريض، إلا أن سياق العبارة يركز على الخطر الصحي وتفشي العدوى.')"><span class="option-letter">ب</span> <span class="font-semibold text-gray-700">يبين مدى الترابط الاجتماعي بين أبناء الحارة.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'على العكس، الكاتب يسخر من هذه الطرق العشوائية التي تجعل شفاء المريض أمراً متروكاً للصدفة.')"><span class="option-letter">ج</span> <span class="font-semibold text-gray-700">يبرز فوائد طرق العلاج المجربة والتي ثبت نجاعتها.</span></div>
+                    <div class="option-item" onclick="checkAnswer(true, 'إجابة صحيحة! العبارة تبرز مدى خطورة الجهل الطبي والاعتماد على وصفات عشوائية قد تضر المريض بدلاً من نفعه.')"><span class="option-letter">د</span> <span class="font-semibold text-gray-700">يبرز خطورة الوصفات العلاجية العشوائية على المرضى.</span></div>
+                </div>
+            </div>
+
+            <div class="question-block mt-4">
+                <div class="flex items-start">
+                    <div class="q-badge">11</div>
+                    <p class="q-text">استنتج علاقة الفقرة الثالثة بالفقرة الثانية.</p>
+                </div>
+                <div class="options-grid">
+                    <div class="option-item" onclick="checkAnswer(true, 'إجابة صحيحة! بدأت الفقرة الثالثة بـ (ولكن)، وهي أداة تفيد الاستدراك لمنع توهم أن اختلاف الطبقات يمنع اختلاط الأطفال.')"><span class="option-letter">أ</span> <span class="font-semibold text-gray-700">استدراك.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'التفصيل يكون بذكر الأجزاء بعد مجمل، وهذا لم يحدث بين الفقرتين.')"><span class="option-letter">ب</span> <span class="font-semibold text-gray-700">تفصيل.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'الفقرة لم تكن نتيجة لسابقتها، بل تناولت زاوية مختلفة وهي علاقة الأطفال ببعضهم.')"><span class="option-letter">ج</span> <span class="font-semibold text-gray-700">نتيجة.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'التعليل يذكر السبب، والفقرة الثالثة لا تذكر سبب ما جاء في الثانية.')"><span class="option-letter">د</span> <span class="font-semibold text-gray-700">تعليل.</span></div>
+                </div>
+            </div>
+            
+            <div class="question-block mt-4">
+                <div class="flex items-start">
+                    <div class="q-badge">12</div>
+                    <p class="q-text">هات من الموضوع ما يدل على ارتباط الزيادة السكانية بتدني مستوى المعيشة والتعليم.</p>
+                </div>
+                <div class="options-list">
+                    <div class="option-item" onclick="checkAnswer(false, 'هذا الخيار يوضح فقط العلاقة بين زيادة المواليد والطبقات الفقيرة، لكنه لا يدل صراحة على تدني مستوى التعليم.')"><span class="option-letter">أ</span> <span class="font-semibold text-gray-700">"تلد سيدة ستة أو ثمانية أو عشرة والبيت الغني الوحيد ليس به ولد".</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'هذا الخيار يتحدث عن ديمقراطية الأطفال ولا علاقة له بالزيادة السكانية أو تدني المعيشة.')"><span class="option-letter">ب</span> <span class="font-semibold text-gray-700">"فقد كنا نحن الأطفال - ديمقراطيين، لا نقيم كبير وزن لغنى ولا فقر ولا تعلم ولا جهل".</span></div>
+                    <div class="option-item" onclick="checkAnswer(true, 'إجابة صحيحة! هذا الخيار يجمع بين الزيادة السكانية (كثيرو الأولاد) وتدني المعيشة (بؤساء) وتدني التعليم (لا يُعلمون في كتاب أو مدرسة).')"><span class="option-letter">ج</span> <span class="font-semibold text-gray-700">"وهؤلاء كثيرو الأولاد بؤساء ... كما أن أولادهم لا يُعلمون في كتاب ولا مدرسة".</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'هذا الخيار يتحدث عن الجهل الطبي وطرق العلاج الشعبية فقط.')"><span class="option-letter">د</span> <span class="font-semibold text-gray-700">"يمرض المريض فيعالجه كل زائر وزائرة، كل يصف دواء من عند العطار جربه فنجح".</span></div>
+                </div>
+            </div>
+
+            <div class="page-footer">
+                <div class="flex items-center gap-2"><i data-lucide="award" class="w-4 h-4 text-accent"></i> <span>الثانوية العامة</span></div>
+                <div>يتبع</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================== الصفحة 6 ================== -->
+    <div class="a4-page">
+        <div class="page-border"></div>
+        <div class="content-wrapper">
+            <div class="page-header">
+                <div class="flex items-center gap-3">
+                    <div class="bg-primary text-white p-1.5 rounded shadow-sm"><i data-lucide="book-open" class="w-4 h-4"></i></div>
+                    <div class="leading-tight">
+                        <div class="font-bold text-primary text-base">النموذج الاسترشادي الأول</div>
+                    </div>
+                </div>
+                <div class="font-bold text-gray-500 text-sm">الصفحة <span class="text-primary text-lg">6</span></div>
+            </div>
+
+            <div class="quote-box relative mt-2">
+                <div class="absolute -right-3 top-3 w-6 h-6 bg-secondary text-white rounded-full flex items-center justify-center font-bold font-cairo shadow-md">!</div>
+                <p class="font-bold text-secondary mb-1">قال أحمد أمين:</p>
+                <p>
+                    "كانت نسبة المواليد في الحارة نسبة عكسية مع الطبقات، فأفقر الطبقات أكثرها عددًا؛ تلد سيدة ستة أو ثمانية أو عشرة، والبيت الغني الوحيد ليس به ولد، وكلما كثر عدد المواليد كثر عدد الوفيات، فالحالة الصحية أسوأ ما يكون، لا عناية بنظافة ماء ولا بنظافة أكل؛ وهم لا يعرفون طبيبًا، وإنما يمرض المريض فيعالجه كل زائر وزائرة، كل يصف دواء من عند العطار جربه فنجح".
+                </p>
+            </div>
+
+            <div class="quote-box relative mt-4">
+                <div class="absolute -right-3 top-3 w-6 h-6 bg-secondary text-white rounded-full flex items-center justify-center font-bold font-cairo shadow-md">!</div>
+                <p class="font-bold text-secondary mb-1">وقال طه حسين في كتابه "الأيام":</p>
+                <p>
+                    "تدعوه أخته إلى الدخول فيأبى، فتخرج فتشُدُّه من ثوبه فيمتنع عليها، فتحمله بين ذراعيها كأنه الثمامة، وتعدو به إلى حيث تنيمه على الأرض وتضع رأسه على فَخِذِ أمه، ثم تعمد هذه إلى عينيه المظلمتين فتفتحهما واحدة بعد الأخرى، وتقطر فيهما سائلًا يُؤذيه ولا يُجدي عليه خيرًا، وهو يألم ولكنه لا يشكو ولا يبكي..."
+                </p>
+            </div>
+
+            <div class="question-block mt-4">
+                <div class="flex items-start">
+                    <div class="q-badge">13</div>
+                    <p class="q-text">وازن من خلال فهمك للفقرتين بين موقف كل من الكاتب وطه حسين من طريقة التداوي في عصرهما.</p>
+                </div>
+                <div class="options-list">
+                    <div class="option-item" onclick="checkAnswer(false, 'الكاتب أحمد أمين لم يُظهر رفضاً قاطعاً كطه حسين، بل أشار إلى أن بعض الوصفات كانت تنجح أحياناً.')"><span class="option-letter">أ</span> <span class="font-semibold text-gray-700">عبر الكاتبان عن عدم رضاهما عن اعتماد التداوي في عصرهما على الوصفات الشعبية دون استشارة طبيب.</span></div>
+                    <div class="option-item" onclick="checkAnswer(true, 'إجابة صحيحة! أحمد أمين أقر بنجاح بعض وصفات العطارين (جربه فنجح)، بينما طه حسين أكد أن قطرة أمه كانت تؤذيه ولا تجديه خيراً.')"><span class="option-letter">ب</span> <span class="font-semibold text-gray-700">أكد الكاتب أن علاجات العطارين كانت تفيد المرضى أحيانًا، لكن طه حسين أنكر جدوى العلاج الذي تلقاه.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'أحمد أمين أشار لعلاجات العطار وليس المعارف، وطه حسين لم يشكُ من طريقة أمه بل من ألم العلاج وعدم جدواه.')"><span class="option-letter">ج</span> <span class="font-semibold text-gray-700">أقر الكاتب بنجاح وصفات المعارف في شفاء الأمراض، وشكا طه من طريقة أمه في سكب الدواء في عينه.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'طه حسين لم يستحسن طريقة العلاج مطلقاً، بل صرح بوضوح بأنها تؤذيه ولا تفيده.')"><span class="option-letter">د</span> <span class="font-semibold text-gray-700">استحسن الكاتبان طرق العلاج الشائعة في عصرهما، لأنها اعتمدت على وصفات دواء جربها الناس.</span></div>
+                </div>
+            </div>
+
+            <div class="page-footer">
+                <div class="flex items-center gap-2"><i data-lucide="award" class="w-4 h-4 text-accent"></i> <span>الثانوية العامة</span></div>
+                <div>يتبع</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================== الصفحة 7 ================== -->
+    <div class="a4-page">
+        <div class="page-border"></div>
+        <div class="content-wrapper">
+            <div class="page-header">
+                <div class="flex items-center gap-3">
+                    <div class="bg-primary text-white p-1.5 rounded shadow-sm"><i data-lucide="book-open" class="w-4 h-4"></i></div>
+                    <div class="leading-tight">
+                        <div class="font-bold text-primary text-base">النموذج الاسترشادي الأول</div>
+                    </div>
+                </div>
+                <div class="font-bold text-gray-500 text-sm">الصفحة <span class="text-primary text-lg">7</span></div>
+            </div>
+
+            <div class="quote-box mt-2 mb-4 !border-primary">
+                <p>
+                    "وكان مجلس الصبي من هذه الغرفة معروفًا محدودًا كمجلسه من كل غرفة سكنها واختلف إليها، حصير قد بسط على الأرض، ألقي عليه بساط قديم، ولكنه قيم. هنالك يجلس أثناء النهار، وهنالك ينام أثناء الليل؛ تلقى له وسادة يضع عليها رأسه ولحاف يلتف فيه، وكان يحاذي مجلسه من الغرفة مجلس أخيه الشيخ، حصير قد بسط على الأرض وألقي عليه بساط، ثم ألقي على البساط فراش آخر، ثم ألقي من فوق هذا الفراش حشية، عليها كان يجلس الفتى الشيخ ويجلس معه أصفياؤه، ولم يكونوا يسندون ظهورهم إلى الحائط كما كان يفعل الصبي، وإنما كانوا يسندونها إلى وسائد."
+                </p>
+            </div>
+
+            <div class="question-block">
+                <div class="flex items-start">
+                    <div class="q-badge">14</div>
+                    <p class="q-text">هات- من خلال فهمك للفقرة - أربعة أدلة تظهر التفاوت بين مجلس الصبي ومجلس أخيه الشيخ.</p>
+                </div>
+                <div class="h-32 mt-4 border-2 border-dashed border-gray-300 rounded-lg bg-gray-50 flex justify-center items-center text-gray-400 font-amiri mr-10 shadow-inner answer-area" onclick="showAnswer14()">
+                    (مساحة مخصصة لإجابة الطالب)
+                </div>
+            </div>
+
+            <div class="page-footer">
+                <div class="flex items-center gap-2"><i data-lucide="award" class="w-4 h-4 text-accent"></i> <span>الثانوية العامة</span></div>
+                <div>يتبع</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================== الصفحة 8 ================== -->
+    <div class="a4-page">
+        <div class="page-border"></div>
+        <div class="content-wrapper">
+            <div class="page-header">
+                <div class="flex items-center gap-3">
+                    <div class="bg-primary text-white p-1.5 rounded shadow-sm"><i data-lucide="feather" class="w-4 h-4"></i></div>
+                    <div class="leading-tight">
+                        <div class="font-bold text-primary text-base">النموذج الاسترشادي الأول</div>
+                    </div>
+                </div>
+                <div class="font-bold text-gray-500 text-sm">الصفحة <span class="text-primary text-lg">8</span></div>
+            </div>
+
+            <div class="section-ribbon mt-2 mb-0">
+                <i data-lucide="feather" class="w-4 h-4 ml-2 text-accent"></i>
+                <h3 class="text-lg font-bold font-ruqaa mb-0">قال محمود حسن إسماعيل:</h3>
+            </div>
+
+            <div class="poetry-block">
+                <div class="poetry-verse">
+                    <span>1- يا سماء الشرق طوفي بالضياء</span><span class="poetry-separator">✧</span><span>وانشري شمسك في كل سماء</span>
+                </div>
+                <div class="poetry-verse">
+                    <span>2- ذكريه واذكري أيامه</span><span class="poetry-separator">✧</span><span>بهدى الحق ونور الأنبياء</span>
+                </div>
+                <div class="poetry-verse">
+                    <span>3- كانت الدنيا ظلاما حوله</span><span class="poetry-separator">✧</span><span>وهو يهدي بخطاه الحائرينا</span>
+                </div>
+                <div class="poetry-verse">
+                    <span>4- أرضه لم تعرف القيد ولا</span><span class="poetry-separator">✧</span><span>خفضت إلا لباريها الجبينا</span>
+                </div>
+                <div class="poetry-verse">
+                    <span>5- كيف يمشي في ثراها غاصب</span><span class="poetry-separator">✧</span><span>يملأ الأفق جراحا وأنينا؟</span>
+                </div>
+                <div class="poetry-verse">
+                    <span>6- كيف من جناتها يجني المنى</span><span class="poetry-separator">✧</span><span>وترى في ظلها كالغرباء؟</span>
+                </div>
+                <div class="poetry-verse">
+                    <span>7- أيها السائل عن راياتنا</span><span class="poetry-separator">✧</span><span>لم تزل خفاقة في الشهب</span>
+                </div>
+                <div class="poetry-verse">
+                    <span>8- تشعل الماضي وتسقى ناره</span><span class="poetry-separator">✧</span><span>عزة الشرق وبأس العرب</span>
+                </div>
+            </div>
+            
+            <div class="question-block mt-3">
+                <div class="flex items-start">
+                    <div class="q-badge">15</div>
+                    <p class="q-text">ماذا أراد الشاعر بقوله : " بهدى الحق ونور الأنبياء" في البيت الثاني؟</p>
+                </div>
+                <div class="options-list">
+                    <div class="option-item" onclick="checkAnswer(false, 'الشاعر لم يشر إلى كثرة الأنبياء، بل أشار إلى أثرهم وهديهم.')"><span class="option-letter">أ</span> <span class="font-semibold text-gray-700">الإشارة إلى كثرة الأنبياء الذين ولدوا وعاشوا بمصر.</span></div>
+                    <div class="option-item" onclick="checkAnswer(true, 'إجابة صحيحة! عبارة (نور الأنبياء) مع ذكر (سماء الشرق) تشير إلى أن الشرق هو مهبط الرسالات السماوية.')"><span class="option-letter">ب</span> <span class="font-semibold text-gray-700">الإشارة إلى أن الشرق هو مهبط الرسالات والديانات.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'النص يتحدث عن الشرق بشكل عام وليس مصر فقط.')"><span class="option-letter">ج</span> <span class="font-semibold text-gray-700">بيان عظمة مصر وفضلها على سائر البلدان.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'الإرشاد وتحقيق العدل نتيجتان للهدى، لكن العبارة تشير مباشرة إلى نزول الرسالات.')"><span class="option-letter">د</span> <span class="font-semibold text-gray-700">بيان دور الشرق في إرشاد الناس لتحقيق العدل.</span></div>
+                </div>
+            </div>
+
+            <div class="question-block mt-4">
+                <div class="flex items-start">
+                    <div class="q-badge">16</div>
+                    <p class="q-text">استنتج دلالة قول الشاعر : "كيف من جناتها يجني المنى وترى في ظلها كالغرباء؟"</p>
+                </div>
+                <div class="options-list">
+                    <div class="option-item" onclick="checkAnswer(true, 'إجابة صحيحة! قوله (يجني المنى) للمحتل بينما أبناء الوطن (في ظلها كالغرباء) يظهر التحسر الشديد على استباحة خيرات الوطن.')"><span class="option-letter">أ</span> <span class="font-semibold text-gray-700">التحسر على استباحة المحتل خيرات الوطن.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'البيت يحمل استفهاماً غرضه التحسر والاستنكار، وليس استنفاراً مباشراً (كالأمر).')"><span class="option-letter">ب</span> <span class="font-semibold text-gray-700">استنفار أبناء الوطن لمواجهة المحتل.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'الغربة هنا معنوية بسبب سلب المحتل للخيرات، وليست غربة بين الأهل.')"><span class="option-letter">ج</span> <span class="font-semibold text-gray-700">الشعور بالغربة بين الأهل والأحباب.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'الاستئثار تم من قبل (غاصب) وليس طائفة من أبناء الوطن.')"><span class="option-letter">د</span> <span class="font-semibold text-gray-700">استئثار طائفة من أبناء الوطن بخيراته.</span></div>
+                </div>
+            </div>
+
+            <div class="page-footer">
+                <div class="flex items-center gap-2"><i data-lucide="award" class="w-4 h-4 text-accent"></i> <span>الثانوية العامة</span></div>
+                <div>يتبع</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================== الصفحة 9 ================== -->
+    <div class="a4-page">
+        <div class="page-border"></div>
+        <div class="content-wrapper">
+            <div class="page-header">
+                <div class="flex items-center gap-3">
+                    <div class="bg-primary text-white p-1.5 rounded shadow-sm"><i data-lucide="feather" class="w-4 h-4"></i></div>
+                    <div class="leading-tight">
+                        <div class="font-bold text-primary text-base">النموذج الاسترشادي الأول</div>
+                    </div>
+                </div>
+                <div class="font-bold text-gray-500 text-sm">الصفحة <span class="text-primary text-lg">9</span></div>
+            </div>
+
+            <div class="question-block mt-2">
+                <div class="flex items-start">
+                    <div class="q-badge">17</div>
+                    <p class="q-text">استنتج المغزى من البيت السابع.</p>
+                </div>
+                <div class="options-list">
+                    <div class="option-item" onclick="checkAnswer(false, 'البيت لا يقتصر على الفخر بالماضي، بل يؤكد استمرار الشموخ في الحاضر (لم تزل خفاقة).')"><span class="option-letter">أ</span> <span class="font-semibold text-gray-700">تأكيد فخر أبناء الوطن بتراث وطنهم المجيد.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'البيت يتحدث عن الرايات والشهب (الرفعة)، ولا يتطرق لمرحلة الرهبة.')"><span class="option-letter">ب</span> <span class="font-semibold text-gray-700">بيان تخطي مصر مرحلة الرهبة من الأعداء.</span></div>
+                    <div class="option-item" onclick="checkAnswer(true, 'إجابة صحيحة! (راياتنا لم تزل خفاقة في الشهب) كناية عن علو المنزلة واستمرار شموخ الشرق.')"><span class="option-letter">ج</span> <span class="font-semibold text-gray-700">تأكيد شموخ الشرق وعلو منزلة العرب بين الأمم.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'لم يشر البيت السابع إلى تضحيات، بل أشار إلى العزة والرفعة.')"><span class="option-letter">د</span> <span class="font-semibold text-gray-700">بيان عظم تضحيات أبناء الشرق لرفعة الوطن.</span></div>
+                </div>
+            </div>
+
+            <div class="question-block mt-4">
+                <div class="flex items-start">
+                    <div class="q-badge">18</div>
+                    <p class="q-text">بين المبدأ الذي تبناه الشاعر في قوله : "أرضه لم تعرف القيد" في البيت الرابع.</p>
+                </div>
+                <div class="options-list">
+                    <div class="option-item" onclick="checkAnswer(false, 'البيت لم يتحدث عن التضحية بالنفس صراحة.')"><span class="option-letter">أ</span> <span class="font-semibold text-gray-700">التضحية بالنفس سبيل الحفاظ على الأرض.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'المجد مذكور، لكن التركيز في (لم تعرف القيد) على الحرية ورفض العبودية.')"><span class="option-letter">ب</span> <span class="font-semibold text-gray-700">القوة أساس مجد الشعوب.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'لم يربط الشاعر حماية الاستقلال بالماضي في هذا البيت بالتحديد.')"><span class="option-letter">ج</span> <span class="font-semibold text-gray-700">الماضي المجيد كفيل بحماية استقلال الأمم.</span></div>
+                    <div class="option-item" onclick="checkAnswer(true, 'إجابة صحيحة! (لم تعرف القيد) و(لا خفضت إلا لباريها الجبينا) يؤكدان أن الحرية ورفض الذل صفتان متأصلتان في الشرق.')"><span class="option-letter">د</span> <span class="font-semibold text-gray-700">الحرية صفة أصيلة في الشرق.</span></div>
+                </div>
+            </div>
+
+            <div class="question-block mt-4">
+                <div class="flex items-start">
+                    <div class="q-badge">19</div>
+                    <p class="q-text">هات من النص ما يدل على الريادة الحضارية للشرق.</p>
+                </div>
+                <div class="options-grid">
+                    <div class="option-item" onclick="checkAnswer(false, 'هذا يدل على وقوع الاحتلال والاستعمار.')"><span class="option-letter">أ</span> <span class="font-semibold text-gray-700">"كيف يمشي في ثراها غاصب".</span></div>
+                    <div class="option-item" onclick="checkAnswer(true, 'إجابة صحيحة! (يهدي بخطاه الحائرينا) تدل على الريادة وإرشاد الآخرين حضارياً وروحياً.')"><span class="option-letter">ب</span> <span class="font-semibold text-gray-700">"وهو يهدي بخطاه الحائرينا".</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'هذا يدل على سلب المحتل لخيرات الشرق.')"><span class="option-letter">ج</span> <span class="font-semibold text-gray-700">"كيف من جناتها يجني المنى".</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'هذا يدل على استمداد القوة والعزة من الماضي، وليس بالضرورة إرشاد الآخرين.')"><span class="option-letter">د</span> <span class="font-semibold text-gray-700">"تشعل الماضي وتسقى ناره".</span></div>
+                </div>
+            </div>
+
+            <div class="question-block mt-4">
+                <div class="flex items-start">
+                    <div class="q-badge">20</div>
+                    <p class="q-text">استنتج العاطفة المسيطرة على الشاعر في الأبيات.</p>
+                </div>
+                <div class="options-list">
+                    <div class="option-item" onclick="checkAnswer(true, 'إجابة صحيحة! الأبيات تفيض بعاطفة الفخر والاعتزاز بأمجاد الشرق وريادته عبر التاريخ.')"><span class="option-letter">أ</span> <span class="font-semibold text-gray-700">الإعجاب بالوطن والاعتزاز بأمجاده العظيمة.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'التعجب موجود من المستعمر وليس من ضعف أبناء الوطن، فالشاعر يؤكد عزة الشرق.')"><span class="option-letter">ب</span> <span class="font-semibold text-gray-700">التعجب من استكانة أبناء الوطن وضعفهم.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'النص يركز على الفخر بالماضي والحاضر واستنكار الاحتلال أكثر من كونه خطة لبناء نهضة مستقبلية.')"><span class="option-letter">ج</span> <span class="font-semibold text-gray-700">الأمل والرغبة في بناء نهضة قوية للوطن.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'الأبيات لا تقف عند تمني العودة، بل تؤكد أن الرايات (لم تزل خفاقة).')"><span class="option-letter">د</span> <span class="font-semibold text-gray-700">الإشادة بأمجاد السابقين والأمل في عودتها.</span></div>
+                </div>
+            </div>
+
+            <div class="page-footer">
+                <div class="flex items-center gap-2"><i data-lucide="award" class="w-4 h-4 text-accent"></i> <span>الثانوية العامة</span></div>
+                <div>يتبع</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================== الصفحة 10 ================== -->
+    <div class="a4-page">
+        <div class="page-border"></div>
+        <div class="content-wrapper">
+            <div class="page-header">
+                <div class="flex items-center gap-3">
+                    <div class="bg-primary text-white p-1.5 rounded shadow-sm"><i data-lucide="feather" class="w-4 h-4"></i></div>
+                    <div class="leading-tight">
+                        <div class="font-bold text-primary text-base">النموذج الاسترشادي الأول</div>
+                    </div>
+                </div>
+                <div class="font-bold text-gray-500 text-sm">الصفحة <span class="text-primary text-lg">10</span></div>
+            </div>
+            
+            <div class="question-block mt-2">
+                <div class="flex items-start">
+                    <div class="q-badge">21</div>
+                    <p class="q-text">ميز نوع الصورة البيانية في قول الشاعر : " تشعل الماضي " في البيت الأخير.</p>
+                </div>
+                <div class="options-grid">
+                    <div class="option-item" onclick="checkAnswer(false, 'الصورة ليست كناية، بل هي تصوير للماضي بنار.')"><span class="option-letter">أ</span> <span class="font-semibold text-gray-700">كناية عن موصوف.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'الاستعارة التصريحية يُصرح فيها بالمشبه به، وهنا لم يُصرح به صراحة باسم جامد.')"><span class="option-letter">ب</span> <span class="font-semibold text-gray-700">استعارة تصريحية.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'التشبيه البليغ يذكر فيه المشبه والمشبه به معاً.')"><span class="option-letter">ج</span> <span class="font-semibold text-gray-700">تشبيه بليغ.</span></div>
+                    <div class="option-item" onclick="checkAnswer(true, 'إجابة صحيحة! استعارة مكنية، حيث صور (الماضي) بنار (تشعل)، وحذف المشبه به وأتى بصفة من صفاته.')"><span class="option-letter">د</span> <span class="font-semibold text-gray-700">استعارة مكنية.</span></div>
+                </div>
+            </div>
+
+            <div class="question-block mt-4">
+                <div class="flex items-start">
+                    <div class="q-badge">22</div>
+                    <p class="q-text">استنتج السمة التي ظهرت في الأبيات من سمات مدرسة أبولو.</p>
+                </div>
+                <div class="options-list">
+                    <div class="option-item" onclick="checkAnswer(true, 'إجابة صحيحة! من سمات مدرسة أبولو الجنوح للعاطفة الجياشة، وقد ظهرت بوضوح في حبه للشرق والتغني بأمجاده.')"><span class="option-letter">أ</span> <span class="font-semibold text-gray-700">العاطفة الجياشة في التغني بأمجاد الشرق.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'الأبيات لا تتحدث عن مواطن ذكريات الصبا الشخصية للشاعر بل عن مجد الشرق عموماً.')"><span class="option-letter">ب</span> <span class="font-semibold text-gray-700">الحنين إلى مواطن الذكريات وأيام الصبا.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'هذه السمة (التأمل والتعمق) من خصائص مدرسة الديوان وليس أبولو.')"><span class="option-letter">ج</span> <span class="font-semibold text-gray-700">التأمل والتعمق في ظواهر الأشياء.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'هذه السمة (شعر المناسبات) تُعاب على مدرسة الإحياء والبعث، وشعراء أبولو ابتعدوا عنها.')"><span class="option-letter">د</span> <span class="font-semibold text-gray-700">غلبة المناسبات والمحافل في أشعارهم.</span></div>
+                </div>
+            </div>
+
+            <div class="mt-6 mb-2">
+                <p class="font-bold text-secondary mb-1 text-[1.1rem] border-r-4 border-accent pr-3 bg-gray-50 py-1 inline-block">قال عبد المحسن الكاظمي:</p>
+                <div class="poetry-block !my-1 !py-2">
+                    <div class="poetry-verse !text-[1.1rem]">
+                        <span>الله جمعية للشرق جامعة</span><span class="poetry-separator">✧</span><span>شتات عزم لغير الشرق ما جمعا</span>
+                    </div>
+                    <div class="poetry-verse !text-[1.1rem] !mb-0">
+                        <span>لا الدين فيها بمرموق تعصبه</span><span class="poetry-separator">✧</span><span>ولا السياسة لاقت عندها نجعا</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="question-block mt-3">
+                <div class="flex items-start">
+                    <div class="q-badge">23</div>
+                    <p class="q-text">استنتج السمة التي اتضحت في البيتين من سمات مدرسة الإحياء من حيث الموضوع.</p>
+                </div>
+                <div class="options-list">
+                    <div class="option-item" onclick="checkAnswer(false, 'البيتان يتحدثان عن التجمع ووحدة الشرق، وليس عن الإصلاح الاقتصادي.')"><span class="option-letter">أ</span> <span class="font-semibold text-gray-700">إيمانهم بضرورة الإصلاح الاجتماعي والاقتصادي.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'رغم أهمية التراث، التركيز هنا على فكرة (الجمعية) و(جامعة).')"><span class="option-letter">ب</span> <span class="font-semibold text-gray-700">ترسيخ الإحساس بتراث الأجداد والماضي العريق.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'لا يوجد في البيتين المذكورين للكاظمي ذكر للاحتلال أو التنديد به صراحة.')"><span class="option-letter">ج</span> <span class="font-semibold text-gray-700">التنديد بالاحتلال ومظالمه.</span></div>
+                    <div class="option-item" onclick="checkAnswer(true, 'إجابة صحيحة! البيتان يشيران صراحة إلى التجمع والوحدة (جمعية للشرق جامعة) مما يعكس الإيمان بفكرة الجامعة الإسلامية كرمز لوحدة الشرق.')"><span class="option-letter">د</span> <span class="font-semibold text-gray-700">الإيمان بفكرة الجامعة الإسلامية.</span></div>
+                </div>
+            </div>
+
+            <div class="page-footer">
+                <div class="flex items-center gap-2"><i data-lucide="award" class="w-4 h-4 text-accent"></i> <span>الثانوية العامة</span></div>
+                <div>يتبع</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================== الصفحة 11 ================== -->
+    <div class="a4-page">
+        <div class="page-border"></div>
+        <div class="content-wrapper">
+            <div class="page-header">
+                <div class="flex items-center gap-3">
+                    <div class="bg-primary text-white p-1.5 rounded shadow-sm"><i data-lucide="feather" class="w-4 h-4"></i></div>
+                    <div class="leading-tight">
+                        <div class="font-bold text-primary text-base">النموذج الاسترشادي الأول</div>
+                    </div>
+                </div>
+                <div class="font-bold text-gray-500 text-sm">الصفحة <span class="text-primary text-lg">11</span></div>
+            </div>
+            
+            <div class="mt-2 mb-2">
+                <p class="font-bold text-secondary mb-1 text-[1.1rem] border-r-4 border-accent pr-3 bg-gray-50 py-1 inline-block">قال العقاد :</p>
+                <div class="poetry-block !my-1 !py-2">
+                    <div class="poetry-verse !text-[1.1rem] !mb-0">
+                        <span>إنا لنضحك لا صفوا ولا لعبا</span><span class="poetry-separator">✧</span><span>وقد ينوح بغير الدمع أَسْوَانُ</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="flex items-start">
+                    <div class="q-badge">24</div>
+                    <p class="q-text">استنتج السمة التي ظهرت في البيت السابق من سمات مدرسة الديوان.</p>
+                </div>
+                <div class="options-list">
+                    <div class="option-item" onclick="checkAnswer(false, 'مدرسة الديوان تتميز بغلبة الجانب الذهني الفكري على العاطفي، وليس العكس.')"><span class="option-letter">أ</span> <span class="font-semibold text-gray-700">غلبة الجانب العاطفي على الجانب الذهني.</span></div>
+                    <div class="option-item" onclick="checkAnswer(true, 'إجابة صحيحة! كلمات مثل (ينوح) و(أسوان) تشير بوضوح إلى مسحة الحزن والألم والتشاؤم التي تميز شعراء الديوان.')"><span class="option-letter">ب</span> <span class="font-semibold text-gray-700">ظهور مسحة الحزن والتشاؤم.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'البيت يعبر عن حالة نفسية وشعورية (ضحك كالبكاء) وليس قضية عصر عامة.')"><span class="option-letter">ج</span> <span class="font-semibold text-gray-700">التعبير عن قضايا العصر.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'لا يوجد في هذا البيت تأمل في أسرار الكون، بل تعبير عن ألم نفسي.')"><span class="option-letter">د</span> <span class="font-semibold text-gray-700">التأمل في الكون والتعمق في أسرار الوجود.</span></div>
+                </div>
+            </div>
+
+            <div class="mt-4 mb-2">
+                <p class="font-bold text-secondary mb-1 text-[1.1rem] border-r-4 border-accent pr-3 bg-gray-50 py-1 inline-block">قال مطران:</p>
+                <div class="poetry-block !my-1 !py-2">
+                    <div class="poetry-verse !text-[1.1rem] !mb-0">
+                        <span>وأنت أوقدت في جنبي الغرام فما</span><span class="poetry-separator">✧</span><span>رَقَدْتُ إِلَّا حَسِبت المهد مُحتَرِقا</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="flex items-start">
+                    <div class="q-badge">25</div>
+                    <p class="q-text">بين السمة التي اتضحت في البيت السابق من سمات الاتجاه الوجداني.</p>
+                </div>
+                <div class="options-list">
+                    <div class="option-item" onclick="checkAnswer(false, 'الاهتمام بالناحية البيانية على حساب المضمون من مآخذ مطران على الإحيائيين.')"><span class="option-letter">أ</span> <span class="font-semibold text-gray-700">الاهتمام بالنواحى البيانية مثل: " أوقدت في جنبي الغرام".</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'الرمز واللغة الحية سمات تميزت بها مدارس أخرى (كالمهاجر والواقعية) أكثر من الاتجاه الوجداني الكلاسيكي.')"><span class="option-letter">ب</span> <span class="font-semibold text-gray-700">الاعتماد على الرمز واللغة الحية مثل: "جنبي".</span></div>
+                    <div class="option-item" onclick="checkAnswer(true, 'إجابة صحيحة! البيت يفيض بالتعبير عن الذاتية والتجربة الشعورية الصادقة وقوة العاطفة تجاه المحبوبة.')"><span class="option-letter">ج</span> <span class="font-semibold text-gray-700">قوة العاطفة تجاه المحبوبة والذاتية في : "حسبت المهد محترقا".</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'رغم وجود ألم (احترق)، إلا أن السمة الأبرز والأعم هنا هي قوة عاطفة الحب والذاتية، وليس التشاؤم العام.')"><span class="option-letter">د</span> <span class="font-semibold text-gray-700">ظهور مسحة التشاؤم والحزن في : " محترقا".</span></div>
+                </div>
+            </div>
+
+            <div class="page-footer">
+                <div class="flex items-center gap-2"><i data-lucide="award" class="w-4 h-4 text-accent"></i> <span>الثانوية العامة</span></div>
+                <div>يتبع</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================== الصفحة 12 ================== -->
+    <div class="a4-page">
+        <div class="page-border"></div>
+        <div class="content-wrapper">
+            <div class="page-header">
+                <div class="flex items-center gap-3">
+                    <div class="bg-primary text-white p-1.5 rounded shadow-sm"><i data-lucide="book-open" class="w-4 h-4"></i></div>
+                    <div class="leading-tight">
+                        <div class="font-bold text-primary text-base">النموذج الاسترشادي الأول</div>
+                    </div>
+                </div>
+                <div class="font-bold text-gray-500 text-sm">الصفحة <span class="text-primary text-lg">12</span></div>
+            </div>
+
+            <div class="mt-2 mb-2">
+                <p class="font-bold text-secondary mb-1 text-[1.1rem] border-r-4 border-accent pr-3 bg-gray-50 py-1 inline-block">قال فوزى المعلوف:</p>
+                <div class="poetry-block !my-1 !py-2">
+                    <div class="poetry-verse !text-[1.1rem]">
+                        <span>وا طُولَ أَشْوَاقِي إِلَى الوَادِي!</span><span class="poetry-separator">✧</span><span>ملهى صباي ومهد ميلادي</span>
+                    </div>
+                    <div class="poetry-verse !text-[1.1rem] !mb-0">
+                        <span>وَادِي الهَوَى والحُسْنِ والشعر</span><span class="poetry-separator">✧</span><span>وعسى يكون بحضنه قبري</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="question-block mt-3">
+                <div class="flex items-start">
+                    <div class="q-badge">26</div>
+                    <p class="q-text">أي - مما يلي - يؤكد تحقق سمة الحنين إلى الوطن لدى شعراء المهاجر في البيتين السابقين.</p>
+                </div>
+                <div class="options-list">
+                    <div class="option-item" onclick="checkAnswer(true, 'إجابة صحيحة! قوله (وا طول أشواقي إلى الوادي) و(ملهى صباي ومهد ميلادي) يؤكد شدة حنينه لموطنه وذكرياته في وطنه الأم.')"><span class="option-letter">أ</span> <span class="font-semibold text-gray-700">عبر عن شدة شوقه إلى موطن ميلاده ولعبه.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'الشاعر يتمنى العودة للوادي، لا التمتع به وهو في الغربة.')"><span class="option-letter">ب</span> <span class="font-semibold text-gray-700">أظهر رغبته في التمتع بجمال الوادي في غربته.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'الإعجاب موجود، لكن أسلوب الندبة (وا طول أشواقي) يدل على الحنين والشوق أكثر من مجرد الإعجاب.')"><span class="option-letter">ج</span> <span class="font-semibold text-gray-700">عبر عن إعجابه بما في قريته من جمال.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'الشاعر يتمنى أن يكون حضن الوادي قبراً له (تمني العودة حتى للموت)، وليس مجرد رؤية القبور.')"><span class="option-letter">د</span> <span class="font-semibold text-gray-700">أظهر رغبته في رؤية قبور الوادي.</span></div>
+                </div>
+            </div>
+
+            <div class="section-ribbon mt-5">
+                <i data-lucide="book-open" class="w-4 h-4 ml-2 text-accent"></i>
+                <h3 class="text-lg font-bold font-ruqaa mb-0">قال ميخائيل نعيمة في (قصة أبو بطة):</h3>
+            </div>
+
+            <div class="passage-card">
+                <p class="passage-text">
+                    كان أبو بطة سيد العتالين وكنت قد كلفته مصادفة بنقل حقيبة خفيفة مسافة لا تتجاوز المائة من الخطوات، ثم نقدته أجرًا كان على ما بدا لي فوق ما توقعه، فما كاد يصدق عينيه، والتفت إلي وقال: "ممنون يا أستاذ"، ومن هنا صارت صداقتنا.
+                </p>
+                <p class="passage-text">
+                    وذات يوم ذهبت لأبتاع حاجة من المخزن الذي وقف أبو بطة جل عمره على خدمته، فرأيت صديقي وقد جاوز الخمس والثمانين على عادته رابضًا على العتبة، وفي يده رغيف من الخبز يقضمه على مهل بما تبقى في فمه من أسنان بالية، حييته بلطف فما هش ولا بش، بل تظاهر كأنه لم يرني ولم يسمعني، وما دخلت المخزن حتى بادرني صاحبه بقوله: جئت في وقتك، فما يستطيع غيرك أن يخرجنا من هذا المأزق، أترى ذلك البرميل من زيت النفط؟ إن صاحبك أبا بطة يصر على حمله، ويؤكد أنه ليس في المدينة كلها عتال يقوى عليه، ويأبى أن نأتي بابنه حسين ليحمله. أفلا تلطفت وأقنعته؟
+                </p>
+                <p class="passage-text">
+                    ما كاد صاحب المخزن يُنهي كلامه حتى وثب أبو بطة من مريضه وصاح، بل زمجر، واللقمة ما تزال في فمه يحاول بلعها فلا تنبلع : نادوه - نادوه، لا حسين ولا غير حسين يستطيع أن يحمله ويخطو به خطوة واحدة.
+                </p>
+            </div>
+
+            <div class="page-footer">
+                <div class="flex items-center gap-2"><i data-lucide="award" class="w-4 h-4 text-accent"></i> <span>الثانوية العامة</span></div>
+                <div>يتبع</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================== الصفحة 13 ================== -->
+    <div class="a4-page">
+        <div class="page-border"></div>
+        <div class="content-wrapper">
+            <div class="page-header">
+                <div class="flex items-center gap-3">
+                    <div class="bg-primary text-white p-1.5 rounded shadow-sm"><i data-lucide="book-open" class="w-4 h-4"></i></div>
+                    <div class="leading-tight">
+                        <div class="font-bold text-primary text-base">النموذج الاسترشادي الأول</div>
+                    </div>
+                </div>
+                <div class="font-bold text-gray-500 text-sm">الصفحة <span class="text-primary text-lg">13</span></div>
+            </div>
+
+            <div class="passage-card mt-2">
+                <p class="passage-text">
+                    وجاءوا بحسين فألقى نظرة على برميل النفط، ثم دحرجه قليلا، ثم حاول رفعه من جانب واحد، ثم جمد مكانه برهة في تردد ووجل. وأخيرًا تنحى جانبًا وقال بخجل وانكسار قلب ولا أبي في ربيع مجده كان يستطيع أن يقوم به، عندئذ تقدم أبو بطة من البرميل وبحركة عصبية من يده اليمنى دفع بابنه بضع خطوات إلى الوراء متمتما : اليوم أعرفك قدر نفسك، ثم نادي بصوت عال: ائتوني بمن يرفعه إلى ظهري، فجاءوه بعتالين آخرين علاوة على حسين، والثلاثة رفعوا البرميل وأوثقوه جيدًا بالحبل إلى ظهر أبي بطة، ولحظت أن العتالين وصاحب المخزن ومستخدميه قد حبسوا أنفاسهم مثلي ...!
+                </p>
+                <p class="passage-text">
+                    ولكن أبا بطة خطا بالبرميل خطوة الجمل، وهتف الجميع عاش أبو بطة عاش بطل العتالين! عاش قاهر الخمس والثمانين، وبغتة رأيت أبا بطة يجمد مكانه ثمّ أبصرته يهوي فينطح الأرض بجبينه، وكان آخر ما أبصرت جثة هامدة تجمد النجيع على شفتيها وجبهتها، والتف الحبل حول عنقها. وكان آخر ما سمعت نداء المؤذن: "الله أكبر".
+                    <br><span class="text-[0.9rem] text-primary font-bold mt-1 inline-block bg-accent-light px-2 rounded">(النجيع: الدم)</span>
+                </p>
+            </div>
+
+            <div class="question-block mt-4">
+                <div class="flex items-start">
+                    <div class="q-badge">27</div>
+                    <p class="q-text">ما الكلمة التي تؤدي معنى جملة : "ما هش ولا بش" في سياق الفقرة الثانية؟</p>
+                </div>
+                <div class="options-grid">
+                    <div class="option-item" onclick="checkAnswer(false, 'هذا التعبير يدل على التجاهل وعدم الاكتراث، وليس التجمل.')"><span class="option-letter">أ</span> <span class="font-semibold text-gray-700">تجمل.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'العبارة تعني عدم إظهار أي رد فعل إيجابي، ولا تعبر عن الألم.')"><span class="option-letter">ب</span> <span class="font-semibold text-gray-700">تألم.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'التصنع هو التكلف، والعبارة تشير إلى الانقطاع واللامبالاة.')"><span class="option-letter">ج</span> <span class="font-semibold text-gray-700">تصنع.</span></div>
+                    <div class="option-item" onclick="checkAnswer(true, 'إجابة صحيحة! جملة (ما هش ولا بش) تعبر عن التجاهل واللامبالاة، كما أكد الكاتب بعدها (تظاهر كأنه لم يرني).')"><span class="option-letter">د</span> <span class="font-semibold text-gray-700">تجاهل.</span></div>
+                </div>
+            </div>
+            
+            <div class="question-block mt-4">
+                <div class="flex items-start">
+                    <div class="q-badge">28</div>
+                    <p class="q-text">بم وصف الكاتب " أبا بطة " في الفقرة الثانية؟</p>
+                </div>
+                <div class="options-list">
+                    <div class="option-item" onclick="checkAnswer(false, 'لم يكن يائساً، بل كان مصراً على قوته وتحدي الآخرين.')"><span class="option-letter">أ</span> <span class="font-semibold text-gray-700">بدت عليه علامات اليأس والإحباط والضيق.</span></div>
+                    <div class="option-item" onclick="checkAnswer(true, 'إجابة صحيحة! الكاتب وصفه بقوله (جاوز الخمس والثمانين) و(أسنان بالية) مما يدل على الشيخوخة.')"><span class="option-letter">ب</span> <span class="font-semibold text-gray-700">بدت عليه علامات الشيخوخة والهرم.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'أكله لكسرة خبز يدل على بساطة حاله وضعفه وليس الإسراف في الطعام.')"><span class="option-letter">ج</span> <span class="font-semibold text-gray-700">حب الطعام والإسرف فيه.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'كان متجاهلاً بسبب كبر سنه وحالته المزاجية، وليس تعالياً على الناس.')"><span class="option-letter">د</span> <span class="font-semibold text-gray-700">التكبر والتعالي على الناس.</span></div>
+                </div>
+            </div>
+
+            <div class="page-footer">
+                <div class="flex items-center gap-2"><i data-lucide="award" class="w-4 h-4 text-accent"></i> <span>الثانوية العامة</span></div>
+                <div>يتبع</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================== الصفحة 14 ================== -->
+    <div class="a4-page">
+        <div class="page-border"></div>
+        <div class="content-wrapper">
+            <div class="page-header">
+                <div class="flex items-center gap-3">
+                    <div class="bg-primary text-white p-1.5 rounded shadow-sm"><i data-lucide="book-open" class="w-4 h-4"></i></div>
+                    <div class="leading-tight">
+                        <div class="font-bold text-primary text-base">النموذج الاسترشادي الأول</div>
+                    </div>
+                </div>
+                <div class="font-bold text-gray-500 text-sm">الصفحة <span class="text-primary text-lg">14</span></div>
+            </div>
+
+            <div class="question-block mt-2">
+                <div class="flex items-start">
+                    <div class="q-badge">29</div>
+                    <p class="q-text">استنتج مغزى قوله : "اليوم أعرفك قدر نفسك" في سياق الفقرة الثالثة.</p>
+                </div>
+                <div class="options-grid">
+                    <div class="option-item" onclick="checkAnswer(true, 'إجابة صحيحة! العبارة تحمل تحدياً مباشراً لابنه وإصراراً شديداً على قدرته وقوته رغم كبر سنه.')"><span class="option-letter">أ</span> <span class="font-semibold text-gray-700">الثقة والتحدي.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'الغضب كان دافعاً للموقف، لكن المغزى من العبارة نفسها هو التحدي وإثبات التفوق.')"><span class="option-letter">ب</span> <span class="font-semibold text-gray-700">الغضب والغيظ.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'لم يكن يشمت في ابنه العاجز، بل كان يريد التفاخر والتحدي وإثبات قدرته.')"><span class="option-letter">ج</span> <span class="font-semibold text-gray-700">الشماتة والتشفي.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'الموقف كان جدياً ومتوتراً للغايه ولا يحمل أي روح للمزاح.')"><span class="option-letter">د</span> <span class="font-semibold text-gray-700">المزاح والمداعبة.</span></div>
+                </div>
+            </div>
+
+            <div class="question-block mt-4">
+                <div class="flex items-start">
+                    <div class="q-badge">30</div>
+                    <p class="q-text">بين نوع الصورة البيانية وقيمتها الفنية في قوله : "وقف أبو بطة جل عمره على خدمته" في الفقرة الثانية.</p>
+                </div>
+                <div class="options-list">
+                    <div class="option-item" onclick="checkAnswer(false, 'ليس تشبيهاً بليغاً لعدم وجود طرفي التشبيه المباشرين.')"><span class="option-letter">أ</span> <span class="font-semibold text-gray-700">تشبيه بليغ، يظهر حب أبي بطة للعمل.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'الكناية صحيحة كنوع هنا (عن الإخلاص والملازمة)، لكن القيمة الفنية المكتوبة هنا (الملل والسأم) خاطئة.')"><span class="option-letter">ب</span> <span class="font-semibold text-gray-700">كناية، تؤكد ما أصابه من الملل والسأم.</span></div>
+                    <div class="option-item" onclick="checkAnswer(true, 'إجابة صحيحة! أطلق (العمر) وأراد جزءاً منه وهو وقت العمل، فهو مجاز مرسل علاقته الكلية يوحي بتفانيه وإخلاصه الشديد.')"><span class="option-letter">ج</span> <span class="font-semibold text-gray-700">مجاز مرسل، يبين إخلاصه في العمل.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'ليست استعارة تصريحية، حيث لا يوجد تصريح بلفظ المشبه به كبديل عن المشبه.')"><span class="option-letter">د</span> <span class="font-semibold text-gray-700">استعارة تصريحية، تبين قوة التحمل.</span></div>
+                </div>
+            </div>
+
+            <div class="question-block mt-4">
+                <div class="flex items-start">
+                    <div class="q-badge">31</div>
+                    <p class="q-text">هات من الموضوع ما يدل على أن أبا بطة لم يدرك تأثير مرور السنين على قوته.</p>
+                </div>
+                <div class="options-list">
+                    <div class="option-item" onclick="checkAnswer(true, 'إجابة صحيحة! إصراره الغريب على أنه أقوى عتال في المدينة رغم شيخوخته يثبت عدم إدراكه لضعف جسده.')"><span class="option-letter">أ</span> <span class="font-semibold text-gray-700">"إن صاحبك أبا بطة يصر على حمله، ويؤكد أنه ليس في المدينة كلها عتال يقوى عليه".</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'هذا يثبت فعلياً تقدم عمره وضعفه، لكنه لا يعبر عن وجهة نظره وإدراكه هو لذلك.')"><span class="option-letter">ب</span> <span class="font-semibold text-gray-700">"فرأيت صديقي وقد جاوز الخمس والثمانين على عادته رابضًا على العتبة".</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'هذا الحدث يصف محاولة حسين (الابن) لرفع البرميل وليس سلوك أبي بطة.')"><span class="option-letter">ج</span> <span class="font-semibold text-gray-700">"فألقى نظرة على برميل النفط، ثم دحرجه قليلا ، ثم حاول رفعه من جانب واحد".</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'هذا اعتراف من الابن بضعفه وبقوة أبيه في الماضي، ولا يصف إدراك الأب لحالته الحاضرة.')"><span class="option-letter">د</span> <span class="font-semibold text-gray-700">"وأخيرًا تنحى جانبًا وقال بخجل وانكسار قلب : ولا أبي في ربيع مجده كان يستطيع أن يقوم به".</span></div>
+                </div>
+            </div>
+
+            <div class="question-block mt-4">
+                <div class="flex items-start">
+                    <div class="q-badge">32</div>
+                    <p class="q-text">استخرج من النص تشبيها، وبين سر جماله.</p>
+                </div>
+                <div class="options-list">
+                    <div class="option-item" onclick="checkAnswer(false, 'هذه كناية عن نسبة التفوق وقوته، وليست تشبيهاً.')"><span class="option-letter">أ</span> <span class="font-semibold text-gray-700">"عاش قاهر الخمس والثمانين"، وسر جماله التشخيص.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'هذه كناية عن شدة الترقب والتوتر والصدمة، وليست تشبيهاً.')"><span class="option-letter">ب</span> <span class="font-semibold text-gray-700">"حبسوا أنفاسهم"، وسر جماله التشخيص.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'هذا التعبير يدل على الحركة الانفعالية السريعة ويوحي بالغضب ولا يشتمل على تشبيه.')"><span class="option-letter">ج</span> <span class="font-semibold text-gray-700">"وثب أبو بطة من مريضه وصاح"، وسر جماله التوضيح.</span></div>
+                    <div class="option-item" onclick="checkAnswer(true, 'إجابة صحيحة! تشبيه بليغ تم عن طريق إضافة المفعول المطلق المبين للنوع (خطا خطوة الجمل)، وسر جماله التوضيح.')"><span class="option-letter">د</span> <span class="font-semibold text-gray-700">"خطا بالبرميل خطوة الجمل"، وسر جماله التوضيح.</span></div>
+                </div>
+            </div>
+
+            <div class="page-footer">
+                <div class="flex items-center gap-2"><i data-lucide="award" class="w-4 h-4 text-accent"></i> <span>الثانوية العامة</span></div>
+                <div>يتبع</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================== الصفحة 15 ================== -->
+    <div class="a4-page">
+        <div class="page-border"></div>
+        <div class="content-wrapper">
+            <div class="page-header">
+                <div class="flex items-center gap-3">
+                    <div class="bg-primary text-white p-1.5 rounded shadow-sm"><i data-lucide="book-open" class="w-4 h-4"></i></div>
+                    <div class="leading-tight">
+                        <div class="font-bold text-primary text-base">النموذج الاسترشادي الأول</div>
+                    </div>
+                </div>
+                <div class="font-bold text-gray-500 text-sm">الصفحة <span class="text-primary text-lg">15</span></div>
+            </div>
+            
+            <div class="quote-box mt-2 mb-4">
+                <p class="font-bold text-secondary mb-1">قال ميخائيل نعيمة :</p>
+                <p class="mb-2">
+                    "جاءوا بحسين فألقى نظرة على برميل النفط، ثم دحرجه قليلا، ثم حاول رفعه من جانب واحد، ثم جمد مكانه برهة في تردد ووجل".
+                </p>
+                <p class="font-bold text-secondary mb-1 border-t border-gray-300 pt-2">وقال إبراهيم أصلان في نص الكنيسة نورت:</p>
+                <p>
+                    "زمان كان أهالي إِمْبَابَةَ يقضُونَ سهراتهم على طول شاطئ النيل الممتد يغادرون الحواري وهم يحملون الحُصْرَ والأواني، الأولاد يلعبون، وهم يتسامرون ويشربون الشاي".
+                </p>
+            </div>
+
+            <div class="question-block">
+                <div class="flex items-start">
+                    <div class="q-badge">33</div>
+                    <p class="q-text">وازن بين الكاتبين من حيث استخدامهما للصورة الكلية في الفقرتين السابقتين.</p>
+                </div>
+                <div class="options-list">
+                    <div class="option-item" onclick="checkAnswer(false, 'الصورة الكلية عند أصلان (التي جمعت الصوت واللون والحركة بوضوح) كانت أوضح وأكثر اكتمالاً من المقطع المحدد لنعيمة.')"><span class="option-letter">أ</span> <span class="font-semibold text-gray-700">عناصر الصورة الكلية أوضح عند الكاتب منها عند أصلان.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'الصورة لم تفتقد عناصرها عند أصلان، بل كانت متكاملة فنياً وغنية بالتفاصيل الحية.')"><span class="option-letter">ب</span> <span class="font-semibold text-gray-700">افتقدت الصورة الكلية بعض عناصرها عند الكاتب ولم تظهر عند أصلان.</span></div>
+                    <div class="option-item" onclick="checkAnswer(true, 'إجابة صحيحة! أصلان رسم صورة كلية مكتملة (صوت، لون، حركة) بوضوح تام، بينما فقرة نعيمة المحددة ركزت أكثر على الحركة الانفعالية الصامتة للابن.')"><span class="option-letter">ج</span> <span class="font-semibold text-gray-700">عناصر الصورة الكلية أوضح عند أصلان منها عند الكاتب.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'الصورة الكلية ظهرت بوضوح وتكامل شديد عند أصلان ولم تفتقد لعناصرها.')"><span class="option-letter">د</span> <span class="font-semibold text-gray-700">افتقدت الصورة الكلية بعض عناصرها عند أصلان ولم تظهر عند الكاتب.</span></div>
+                </div>
+            </div>
+
+            <div class="question-block mt-4">
+                <div class="flex items-start">
+                    <div class="q-badge">34</div>
+                    <p class="q-text">حدد مما يلي أي مقومات القصة القصيرة تحقق في هذا النص.</p>
+                </div>
+                <div class="options-list">
+                    <div class="option-item" onclick="checkAnswer(true, 'إجابة صحيحة! من أهم مقومات القصة القصيرة وحدة الحدث والتركيز ومحدودية الشخصيات والزمان والمكان، وهذا متحقق بقوة في النص.')"><span class="option-letter">أ</span> <span class="font-semibold text-gray-700">محدودية الشخصيات، والأحداث.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'امتداد الزمان والمكان وتعدد الشخصيات والأحداث من خصائص الرواية وليس القصة القصيرة.')"><span class="option-letter">ب</span> <span class="font-semibold text-gray-700">امتداد عنصري الزمان والمكان.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'الحوار في القصة لم يكن صامتاً، بل كان منطوقاً وواضحاً (صاح، زمجر، قال بخجل، هتف الجميع).')"><span class="option-letter">ج</span> <span class="font-semibold text-gray-700">الحوار الصامت غير المنطوق.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'التقريرية والمباشرة هي عيب فني يبتعد عنه كُتّاب القصة القصيرة الذين يعتمدون على الإيحاء والرمز.')"><span class="option-letter">د</span> <span class="font-semibold text-gray-700">التقرير والخطابية والمباشرة.</span></div>
+                </div>
+            </div>
+
+            <div class="question-block mt-4">
+                <div class="flex items-start">
+                    <div class="q-badge">35</div>
+                    <p class="q-text">بين كيف عبر الكاتب عن فكرته للقراء في هذا العمل الأدبي.</p>
+                </div>
+                <div class="options-list">
+                    <div class="option-item" onclick="checkAnswer(false, 'القصة اعتمدت على الحوار الخارجي المتبادل بين الشخصيات مع السرد، ولم تعتمد على الحوار الداخلي (المونولوج).')"><span class="option-letter">أ</span> <span class="font-semibold text-gray-700">اعتمد على الحوار الداخلي ليفصح للقارئ عن مجتمع الحمالين.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'الأسلوب التقريري الإلقائي المباشر لا يتناسب مع الفن القصصي المعتمد على الإيحاء والتجسيد.')"><span class="option-letter">ب</span> <span class="font-semibold text-gray-700">اعتمد على أسلوب الإلقاء في عبارات تقريرية لإيصال الفكرة.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'القصة واقعية وتدور في بيئة عمالية مألوفة، ولم تمزج بالخيال أو الأساطير.')"><span class="option-letter">ج</span> <span class="font-semibold text-gray-700">جمع بين الحقيقة والخيال في رسم ملامح العتالين وسرد الأحداث.</span></div>
+                    <div class="option-item" onclick="checkAnswer(true, 'إجابة صحيحة! الكاتب استطاع إيصال فكرته ببراعة من خلال الجمع الدقيق بين سرد الأحداث ووصفها، والحوار القصصي بين الشخصيات.')"><span class="option-letter">د</span> <span class="font-semibold text-gray-700">جمع بين السرد والحوار القصصي لإقناع القارئ بوجهة نظره.</span></div>
+                </div>
+            </div>
+
+            <div class="page-footer">
+                <div class="flex items-center gap-2"><i data-lucide="award" class="w-4 h-4 text-accent"></i> <span>الثانوية العامة</span></div>
+                <div>يتبع</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================== الصفحة 16 ================== -->
+    <div class="a4-page">
+        <div class="page-border"></div>
+        <div class="content-wrapper">
+            <div class="page-header">
+                <div class="flex items-center gap-3">
+                    <div class="bg-primary text-white p-1.5 rounded shadow-sm"><i data-lucide="book-open" class="w-4 h-4"></i></div>
+                    <div class="leading-tight">
+                        <div class="font-bold text-primary text-base">النموذج الاسترشادي الأول</div>
+                    </div>
+                </div>
+                <div class="font-bold text-gray-500 text-sm">الصفحة <span class="text-primary text-lg">16</span></div>
+            </div>
+
+            <div class="section-ribbon mt-2 mb-3 !bg-[var(--secondary)]">
+                <i data-lucide="edit-3" class="w-4 h-4 ml-2 text-accent"></i>
+                <h3 class="text-lg font-bold font-ruqaa mb-0">النحو والصرف:</h3>
+            </div>
+
+            <div class="mt-2 mb-3">
+                <p class="font-bold text-secondary mb-1 text-[1.1rem] border-r-4 border-accent pr-3 bg-gray-50 py-1 inline-block">قال الشاعر :</p>
+                <div class="poetry-block !my-1 !py-2">
+                    <div class="poetry-verse !text-[1.1rem] !mb-0">
+                        <span>ليس الجمال بأثواب تزيننا</span><span class="poetry-separator">✧</span><span>إن الجمال جمال العلم والأدب</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="flex items-start">
+                    <div class="q-badge">36</div>
+                    <p class="q-text">ميز - مما يلي - المحل الإعرابي لجملة ( تزيننا ) الواردة في الشطر الأول.</p>
+                </div>
+                <div class="options-grid">
+                    <div class="option-item" onclick="checkAnswer(false, 'الجملة لا تتمم المعنى الأساسي لتكون خبراً، بل تصف اسماً نكرة قبلها.')"><span class="option-letter">أ</span> <span class="font-semibold text-gray-700">نصب خبر.</span></div>
+                    <div class="option-item" onclick="checkAnswer(true, 'إجابة صحيحة! الجمل بعد النكرات صفات، وكلمة (أثواب) مجرورة لفظاً بالباء الزائدة، فتكون جملة (تزيننا) في محل جر نعت.')"><span class="option-letter">ب</span> <span class="font-semibold text-gray-700">جر نعت.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'المضاف إليه يأتي بعد اسم نكرة غير منون، وهنا الاسم مجرور وموصوف.')"><span class="option-letter">ج</span> <span class="font-semibold text-gray-700">جر مضاف إليه.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'جملة الحال تأتي بعد المعارف، وكلمة (أثواب) نكرة.')"><span class="option-letter">د</span> <span class="font-semibold text-gray-700">نصب حال.</span></div>
+                </div>
+            </div>
+
+            <div class="mt-4 mb-3">
+                <p class="font-bold text-secondary mb-1 text-[1.1rem] border-r-4 border-accent pr-3 bg-gray-50 py-1 inline-block">قال الشاعر :</p>
+                <div class="poetry-block !my-1 !py-2">
+                    <div class="poetry-verse !text-[1.1rem] !mb-0">
+                        <span>المِصْرَ أَمْ لِرُبوعِ الشَّامِ تَنتَسِبُ</span><span class="poetry-separator">✧</span><span>هنا العُلا وهناكَ المَجِدُ وَالحَسَبُ</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="flex items-start">
+                    <div class="q-badge">37</div>
+                    <p class="q-text">حدد إعراب كلمة ( العلا ) في الشطر الثاني من البيت السابق.</p>
+                </div>
+                <div class="options-grid">
+                    <div class="option-item" onclick="checkAnswer(true, 'إجابة صحيحة! (هنا) اسم إشارة مبني في محل نصب ظرف مكان (شبه جملة خبر مقدم)، و(العلا) مبتدأ مؤخر مرفوع.')"><span class="option-letter">أ</span> <span class="font-semibold text-gray-700">مبتدأ.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'الخبر في هذه الجملة هو شبه الجملة المقدم (هنا).')"><span class="option-letter">ب</span> <span class="font-semibold text-gray-700">خبر.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'لا يوجد ما يستوجب الإضافة هنا.')"><span class="option-letter">ج</span> <span class="font-semibold text-gray-700">مضاف إليه.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'البدل يتبع المبدل منه، وهنا لا يوجد اسم إشارة يعود عليه معرف بأل ليطابقه.')"><span class="option-letter">د</span> <span class="font-semibold text-gray-700">بدل.</span></div>
+                </div>
+            </div>
+
+            <div class="mt-4 mb-3">
+                <p class="font-bold text-secondary mb-1 text-[1.1rem] border-r-4 border-accent pr-3 bg-gray-50 py-1 inline-block">قال الشاعر :</p>
+                <div class="poetry-block !my-1 !py-2">
+                    <div class="poetry-verse !text-[1.1rem] !mb-0">
+                        <span>وليس بعامر بنيان قوم</span><span class="poetry-separator">✧</span><span>إذا أخلاقهم كانت خرابا</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="flex items-start">
+                    <div class="q-badge">38</div>
+                    <p class="q-text">ميز - مما يلي - إعراب كلمة "بنيان" في البيت السابق.</p>
+                </div>
+                <div class="options-grid">
+                    <div class="option-item" onclick="checkAnswer(false, 'الجملة دخلت عليها (ليس) الناسخة التي ترفع المبتدأ ويسمى اسمها.')"><span class="option-letter">أ</span> <span class="font-semibold text-gray-700">مبتدأ.</span></div>
+                    <div class="option-item" onclick="checkAnswer(true, 'إجابة صحيحة! (بعامر) خبر ليس مقدم مجرور لفظاً بالباء الزائدة، و(بنيان) اسم ليس مؤخر مرفوع.')"><span class="option-letter">ب</span> <span class="font-semibold text-gray-700">اسم ليس.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'خبر ليس في هذه الجملة هو كلمة (بعامر) المسبوقة بالباء الزائدة.')"><span class="option-letter">ج</span> <span class="font-semibold text-gray-700">خبر ليس.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'كلمة (قوم) هي المضاف إليه في الجملة، وليست بنيان.')"><span class="option-letter">د</span> <span class="font-semibold text-gray-700">مضاف إليه.</span></div>
+                </div>
+            </div>
+
+            <div class="page-footer">
+                <div class="flex items-center gap-2"><i data-lucide="award" class="w-4 h-4 text-accent"></i> <span>الثانوية العامة</span></div>
+                <div>يتبع</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================== الصفحة 17 ================== -->
+    <div class="a4-page">
+        <div class="page-border"></div>
+        <div class="content-wrapper">
+            <div class="page-header">
+                <div class="flex items-center gap-3">
+                    <div class="bg-primary text-white p-1.5 rounded shadow-sm"><i data-lucide="book-open" class="w-4 h-4"></i></div>
+                    <div class="leading-tight">
+                        <div class="font-bold text-primary text-base">النموذج الاسترشادي الأول</div>
+                    </div>
+                </div>
+                <div class="font-bold text-gray-500 text-sm">الصفحة <span class="text-primary text-lg">17</span></div>
+            </div>
+
+            <div class="bg-accent-light text-primary text-center font-amiri font-bold text-[1.15rem] py-2 px-4 rounded mt-2 mb-4 mx-6 shadow-sm border border-[rgba(212,175,55,0.4)]">
+                «يسعى المرء نحو تحقيق أهدافه فيعمل عقله ويتقن عمله فيكتسب الخبرات»
+            </div>
+
+            <div class="question-block">
+                <div class="flex items-start">
+                    <div class="q-badge">39</div>
+                    <p class="q-text">ميز الفعل (اللازم) الوارد في الجملة السابقة مما يلي.</p>
+                </div>
+                <div class="options-grid">
+                    <div class="option-item" onclick="checkAnswer(false, 'الفعل (يعمل) متعدٍ، نصب المفعول به (عقله).')"><span class="option-letter">أ</span> <span class="font-semibold text-gray-700">يعمل.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'الفعل (يتقن) متعدٍ، نصب المفعول به (عمله).')"><span class="option-letter">ب</span> <span class="font-semibold text-gray-700">يتقن.</span></div>
+                    <div class="option-item" onclick="checkAnswer(true, 'إجابة صحيحة! الفعل (يسعى) اكتفى بفاعله (المرء) ولم ينصب مفعولاً به، فهو فعل لازم.')"><span class="option-letter">ج</span> <span class="font-semibold text-gray-700">يسعى.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'الفعل (يكتسب) متعدٍ، نصب المفعول به (الخبرات).')"><span class="option-letter">د</span> <span class="font-semibold text-gray-700">يكتسب.</span></div>
+                </div>
+            </div>
+
+            <div class="bg-accent-light text-primary text-center font-amiri font-bold text-[1.15rem] py-2 px-4 rounded my-4 mx-6 shadow-sm border border-[rgba(212,175,55,0.4)]">
+                «نعم الخلق الذي يتحلى به المرء الوفاء»
+            </div>
+
+            <div class="question-block">
+                <div class="flex items-start">
+                    <div class="q-badge">40</div>
+                    <p class="q-text">بين - مما يلي - المخصوص بالمدح في المقولة السابقة.</p>
+                </div>
+                <div class="options-grid">
+                    <div class="option-item" onclick="checkAnswer(true, 'إجابة صحيحة! المخصوص بالمدح هو الصفة التي نمدحها وهي (الوفاء)، وتُعرب مبتدأ مؤخراً أو خبراً لمبتدأ محذوف.')"><span class="option-letter">أ</span> <span class="font-semibold text-gray-700">الوفاء.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'المرء هو فاعل الفعل (يتحلى) في جملة الصلة.')"><span class="option-letter">ب</span> <span class="font-semibold text-gray-700">المرء.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'الخلق هو فاعل المدح للفعل (نعم).')"><span class="option-letter">ج</span> <span class="font-semibold text-gray-700">الخلق.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'الذي هو اسم موصول مبني في محل رفع نعت لكلمة (الخلق).')"><span class="option-letter">د</span> <span class="font-semibold text-gray-700">الذي.</span></div>
+                </div>
+            </div>
+
+            <div class="bg-accent-light text-primary text-center font-amiri font-bold text-[1.15rem] py-2 px-4 rounded mt-4 mb-4 mx-6 shadow-sm border border-[rgba(212,175,55,0.4)]">
+                «لا يغرك ارتقاء السهل، إذا كان المنحدر وعرًا؛ فإن الذي يتأني ويتدرب يتغلب على ما يعتريه»
+            </div>
+
+            <div class="question-block">
+                <div class="flex items-start">
+                    <div class="q-badge">41</div>
+                    <p class="q-text">بين الفعل الذي يجوز توكيده بالنون في المقولة السابقة.</p>
+                </div>
+                <div class="options-grid">
+                    <div class="option-item" onclick="checkAnswer(false, 'الفعل يتأنى لم يسبق بما يجيز توكيده.')"><span class="option-letter">أ</span> <span class="font-semibold text-gray-700">يتأني.</span></div>
+                    <div class="option-item" onclick="checkAnswer(true, 'إجابة صحيحة! الفعل (يغرك) سُبق بطلب (لا الناهية)، ولذلك يجوز توكيده بالنون.')"><span class="option-letter">ب</span> <span class="font-semibold text-gray-700">يغرك.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'الفعل يتغلب لم يسبق بما يجعله جائز التوكيد.')"><span class="option-letter">ج</span> <span class="font-semibold text-gray-700">يتغلب.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'الفعل يعتري جاء في سياق صلة الموصول ولم يسبق بطلب.')"><span class="option-letter">د</span> <span class="font-semibold text-gray-700">يعتري.</span></div>
+                </div>
+            </div>
+
+            <div class="bg-accent-light text-primary text-center font-amiri font-bold text-[1.15rem] py-2 px-4 rounded my-4 mx-6 shadow-sm border border-[rgba(212,175,55,0.4)]">
+                «كفي باليقين غنى»
+            </div>
+
+            <div class="question-block">
+                <div class="flex items-start">
+                    <div class="q-badge">42</div>
+                    <p class="q-text">ميز - مما يلي - إعراب كلمة (اليقين) في المقولة السابقة.</p>
+                </div>
+                <div class="options-grid">
+                    <div class="option-item" onclick="checkAnswer(false, 'اليقين ليست خبراً في هذا التركيب.')"><span class="option-letter">أ</span> <span class="font-semibold text-gray-700">خبر.</span></div>
+                    <div class="option-item" onclick="checkAnswer(true, 'إجابة صحيحة! الاسم الواقع بعد الباء الزائدة في أسلوب (كفى) يُعرب فاعلاً مجروراً لفظاً مرفوعاً محلاً.')"><span class="option-letter">ب</span> <span class="font-semibold text-gray-700">فاعل.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'التمييز في هذه الجملة هو كلمة (غنىً) المنصوبة.')"><span class="option-letter">ج</span> <span class="font-semibold text-gray-700">تمييز مجرور.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'الفعل كفى هنا اكتفى بفاعله ولم ينصب (اليقين) مفعولاً.')"><span class="option-letter">د</span> <span class="font-semibold text-gray-700">مفعول به.</span></div>
+                </div>
+            </div>
+
+            <div class="page-footer">
+                <div class="flex items-center gap-2"><i data-lucide="award" class="w-4 h-4 text-accent"></i> <span>الثانوية العامة</span></div>
+                <div>يتبع</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================== الصفحة 18 ================== -->
+    <div class="a4-page">
+        <div class="page-border"></div>
+        <div class="content-wrapper">
+            <div class="page-header">
+                <div class="flex items-center gap-3">
+                    <div class="bg-primary text-white p-1.5 rounded shadow-sm"><i data-lucide="book-open" class="w-4 h-4"></i></div>
+                    <div class="leading-tight">
+                        <div class="font-bold text-primary text-base">النموذج الاسترشادي الأول</div>
+                    </div>
+                </div>
+                <div class="font-bold text-gray-500 text-sm">الصفحة <span class="text-primary text-lg">18</span></div>
+            </div>
+
+            <div class="mt-2 mb-3">
+                <p class="font-bold text-secondary mb-1 text-[1.1rem] border-r-4 border-accent pr-3 bg-gray-50 py-1 inline-block">قال الشاعر :</p>
+                <div class="poetry-block !my-1 !py-2">
+                    <div class="poetry-verse !text-[1.1rem] !mb-0">
+                        <span>تأبى الرماح إذا اجتمعن تكسرا</span><span class="poetry-separator">✧</span><span>وإذا افترقن تكسرت آحادا.</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="flex items-start">
+                    <div class="q-badge">43</div>
+                    <p class="q-text">ميز المحل الإعرابي لجملة (تكسرت) في البيت السابق.</p>
+                </div>
+                <div class="options-grid">
+                    <div class="option-item" onclick="checkAnswer(false, 'الجملة لم تقع بعد اسم نكرة لتكون نعتاً.')"><span class="option-letter">أ</span> <span class="font-semibold text-gray-700">نعت.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'الجملة التي تقع مضافاً إليه هي جملة الشرط (افترقن) بعد الظرف (إذا)، وليس جملة الجواب.')"><span class="option-letter">ب</span> <span class="font-semibold text-gray-700">مضاف إليه.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'الحال يصف هيئة صاحب الحال، والجملة هنا جواب لشرط.')"><span class="option-letter">ج</span> <span class="font-semibold text-gray-700">حال.</span></div>
+                    <div class="option-item" onclick="checkAnswer(true, 'إجابة صحيحة! جملة (تكسرت) واقعة في جواب شرط لأداة غير جازمة (إذا)، لذا فهي لا محل لها من الإعراب.')"><span class="option-letter">د</span> <span class="font-semibold text-gray-700">لا محل لها.</span></div>
+                </div>
+            </div>
+
+            <div class="question-block mt-4">
+                <div class="flex items-start">
+                    <div class="q-badge">44</div>
+                    <p class="q-text">ميز الجملة التي بها ( كم ) استفهامية.</p>
+                </div>
+                <div class="options-list">
+                    <div class="option-item" onclick="checkAnswer(true, 'إجابة صحيحة! (كم) الاستفهامية يجوز أن تُسبق بحرف جر، ويكون تمييزها مفرداً (مجروراً أو منصوباً).')"><span class="option-letter">أ</span> <span class="font-semibold text-gray-700">من كم قرن بنيت أهرام الجيزة.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'تمييز كم هنا جاء جمعاً مجروراً (أعمال)، وهذا من علامات كم الخبرية.')"><span class="option-letter">ب</span> <span class="font-semibold text-gray-700">كم أعمال للخيرات قدمت.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'دخول (من) على التمييز من علامات كم الخبرية.')"><span class="option-letter">ج</span> <span class="font-semibold text-gray-700">كم من ليلة سهرتها أتأمل.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'تمييز كم هنا جاء جمعاً مجروراً (أمانٍ)، وهي كم الخبرية.')"><span class="option-letter">د</span> <span class="font-semibold text-gray-700">كم أمان عشناها ثم حققناها.</span></div>
+                </div>
+            </div>
+
+            <div class="mt-4 mb-3">
+                <p class="font-bold text-secondary mb-1 text-[1.1rem] border-r-4 border-accent pr-3 bg-gray-50 py-1 inline-block">قال الشاعر :</p>
+                <div class="poetry-block !my-1 !py-2">
+                    <div class="poetry-verse !text-[1.1rem] !mb-0">
+                        <span>وإذا اؤتمنت على الأمانة فارعها</span><span class="poetry-separator">✧</span><span>إن الكريم على الأمانة راع</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="flex items-start">
+                    <div class="q-badge">45</div>
+                    <p class="q-text">بين سبب اقتران جواب الشرط بالفاء في البيت السابق.</p>
+                </div>
+                <div class="options-grid">
+                    <div class="option-item" onclick="checkAnswer(false, 'جملة (فارعها) ليست منفية.')"><span class="option-letter">أ</span> <span class="font-semibold text-gray-700">منفية.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'جملة (فارعها) جملة فعلية تبدأ بفعل أمر وليست اسمية.')"><span class="option-letter">ب</span> <span class="font-semibold text-gray-700">اسمية.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'الفعل (ارع) متصرف وليس جامداً.')"><span class="option-letter">ج</span> <span class="font-semibold text-gray-700">مبدؤة بجامد.</span></div>
+                    <div class="option-item" onclick="checkAnswer(true, 'إجابة صحيحة! اقترن جواب الشرط بالفاء لأن جملة (فارعها) جملة فعلية فعلها طلبي (أمر).')"><span class="option-letter">د</span> <span class="font-semibold text-gray-700">طلبية.</span></div>
+                </div>
+            </div>
+
+            <div class="page-footer">
+                <div class="flex items-center gap-2"><i data-lucide="award" class="w-4 h-4 text-accent"></i> <span>الثانوية العامة</span></div>
+                <div>يتبع</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================== الصفحة 19 ================== -->
+    <div class="a4-page">
+        <div class="page-border"></div>
+        <div class="content-wrapper">
+            <div class="page-header">
+                <div class="flex items-center gap-3">
+                    <div class="bg-primary text-white p-1.5 rounded shadow-sm"><i data-lucide="book-open" class="w-4 h-4"></i></div>
+                    <div class="leading-tight">
+                        <div class="font-bold text-primary text-base">النموذج الاسترشادي الأول</div>
+                    </div>
+                </div>
+                <div class="font-bold text-gray-500 text-sm">الصفحة <span class="text-primary text-lg">19</span></div>
+            </div>
+
+            <div class="bg-accent-light text-primary text-center font-amiri font-bold text-[1.15rem] py-2 px-4 rounded my-3 mx-6 shadow-sm border border-[rgba(212,175,55,0.4)]">
+                «يجب عليك ألا تقصر في رد الأمانات، وإلا تندم. ألا تحب أن يغفر الله لك؟»
+            </div>
+
+            <div class="question-block">
+                <div class="flex items-start">
+                    <div class="q-badge">46</div>
+                    <p class="q-text">ميز - مما يلي - المضارع المجزوم في المقولة السابقة.</p>
+                </div>
+                <div class="options-grid">
+                    <div class="option-item" onclick="checkAnswer(false, 'الفعل (يجب) مضارع مرفوع لتجرده من الناصب والجازم.')"><span class="option-letter">أ</span> <span class="font-semibold text-gray-700">يجب.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'الفعل (يغفر) مضارع منصوب بعد أداة النصب (أن).')"><span class="option-letter">ب</span> <span class="font-semibold text-gray-700">يغفر.</span></div>
+                    <div class="option-item" onclick="checkAnswer(true, 'إجابة صحيحة! الفعل (تندم) مضارع مجزوم لأنه واقع في جواب الشرط، وفعل الشرط محذوف (وإلا تفعل تندم).')"><span class="option-letter">ج</span> <span class="font-semibold text-gray-700">تندم.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'الفعل (تحب) مضارع مرفوع بعد (ألا) الاستفتاحية.')"><span class="option-letter">د</span> <span class="font-semibold text-gray-700">تحب.</span></div>
+                </div>
+            </div>
+
+            <div class="question-block mt-4">
+                <div class="flex items-start">
+                    <div class="q-badge">47</div>
+                    <p class="q-text">بين - مما يلي - أسلوب الاختصاص الصحيح.</p>
+                </div>
+                <div class="options-list">
+                    <div class="option-item" onclick="checkAnswer(false, 'هذا أسلوب نداء، وأداته محذوفة (يا شباب الوطن).')"><span class="option-letter">أ</span> <span class="font-semibold text-gray-700">شباب الوطن، احرصوا على نهضته الكبرى.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'كلمة (شباب) نكرة، والاسم المختص يجب أن يكون معرفاً بأل أو مضافاً لمعرفة.')"><span class="option-letter">ب</span> <span class="font-semibold text-gray-700">أنتم شباب مثقف تسعون إلى المجد.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'هذا أسلوب نداء، ولا يسبقه ضمير متكلم أو مخاطب.')"><span class="option-letter">ج</span> <span class="font-semibold text-gray-700">أيها الشباب ليكن شعاركم الجد والاجتهاد.</span></div>
+                    <div class="option-item" onclick="checkAnswer(true, 'إجابة صحيحة! الاسم المختص (شباب النيل) مضاف إلى معرفة، وجاء ليفسر الضمير المتصل (تم) في (أصبحتم).')"><span class="option-letter">د</span> <span class="font-semibold text-gray-700">أصبحتم شباب النيل درع الوطن.</span></div>
+                </div>
+            </div>
+
+            <div class="bg-accent-light text-primary text-center font-amiri font-bold text-[1.15rem] py-2 px-4 rounded my-4 mx-6 shadow-sm border border-[rgba(212,175,55,0.4)]">
+                «صاحب الأخيار تعل مكانتك، وتهدأ نفسك، ويسترح بالك، وتنل محبة الناس»
+            </div>
+
+            <div class="question-block">
+                <div class="flex items-start">
+                    <div class="q-badge">48</div>
+                    <p class="q-text">ميز - مما يلي - الفعل المعرب بعلامة فرعية في المقولة السابقة.</p>
+                </div>
+                <div class="options-grid">
+                    <div class="option-item" onclick="checkAnswer(true, 'إجابة صحيحة! الفعل (تعلُ) مجزوم في جواب الطلب وعلامة جزمه حذف حرف العلة، وهي علامة إعراب فرعية.')"><span class="option-letter">أ</span> <span class="font-semibold text-gray-700">تعل.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'الفعل (تنل) مجزوم بالسكون (علامة أصلية)، وحذفت الألف لمنع التقاء الساكنين.')"><span class="option-letter">ب</span> <span class="font-semibold text-gray-700">تنل.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'الفعل (تهدأ) مجزوم بالسكون (علامة أصلية) لأنه معطوف.')"><span class="option-letter">ج</span> <span class="font-semibold text-gray-700">تهدأ.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'الفعل (يسترح) مجزوم بالسكون (علامة أصلية).')"><span class="option-letter">د</span> <span class="font-semibold text-gray-700">يسترح.</span></div>
+                </div>
+            </div>
+
+            <div class="question-block mt-4">
+                <div class="flex items-start">
+                    <div class="q-badge">49</div>
+                    <p class="q-text">بين - مما يلي - الجملة التي ورد بها ممنوع من الصرف مجرور بالفتحة.</p>
+                </div>
+                <div class="options-list">
+                    <div class="option-item" onclick="checkAnswer(false, 'كلمة (مصائب) ممنوعة من الصرف ولكنها جُرت بالكسرة لأنها مضافة (مصائب الدهر).')"><span class="option-letter">أ</span> <span class="font-semibold text-gray-700">فقد الصبر من أعظم مصائب الدهر.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'الكلمات هنا مصروفة وليست ممنوعة من الصرف.')"><span class="option-letter">ب</span> <span class="font-semibold text-gray-700">خير جديد ألذ من مال عتيد.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'كلمة (العواطف) جُرت بالكسرة لأنها مقترنة بـ (أل).')"><span class="option-letter">ج</span> <span class="font-semibold text-gray-700">الشعر الجيد تعبير عن العواطف السامية.</span></div>
+                    <div class="option-item" onclick="checkAnswer(true, 'إجابة صحيحة! كلمة (موادّ) صيغة منتهى الجموع مجرورة بالفتحة لأنها مجردة من (أل) والإضافة.')"><span class="option-letter">د</span> <span class="font-semibold text-gray-700">نشجع طلابنا على دراسة مواد علمية وأدبية.</span></div>
+                </div>
+            </div>
+
+            <div class="page-footer">
+                <div class="flex items-center gap-2"><i data-lucide="award" class="w-4 h-4 text-accent"></i> <span>الثانوية العامة</span></div>
+                <div>يتبع</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================== الصفحة 20 ================== -->
+    <div class="a4-page">
+        <div class="page-border"></div>
+        <div class="content-wrapper">
+            <div class="page-header">
+                <div class="flex items-center gap-3">
+                    <div class="bg-primary text-white p-1.5 rounded shadow-sm"><i data-lucide="book-open" class="w-4 h-4"></i></div>
+                    <div class="leading-tight">
+                        <div class="font-bold text-primary text-base">النموذج الاسترشادي الأول</div>
+                    </div>
+                </div>
+                <div class="font-bold text-gray-500 text-sm">الصفحة <span class="text-primary text-lg">20</span></div>
+            </div>
+
+            <div class="bg-accent-light text-primary text-center font-amiri font-bold text-[1.15rem] py-2 px-4 rounded mt-2 mb-4 mx-6 shadow-sm border border-[rgba(212,175,55,0.4)]">
+                «المشاركة المجتمعية تعزز التعاون بين المؤسسات، وتنشر المودة، وتحقق التنمية المستدامة»
+            </div>
+
+            <div class="question-block">
+                <div class="flex items-start">
+                    <div class="q-badge">50</div>
+                    <p class="q-text">بين المصدر الميمي في المقولة السابقة.</p>
+                </div>
+                <div class="options-grid">
+                    <div class="option-item" onclick="checkAnswer(false, 'المشاركة مصدر صريح لفعل رباعي (شارك).')"><span class="option-letter">أ</span> <span class="font-semibold text-gray-700">المشاركة.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'المجتمعية هنا اسم منسوب (نعت لكلمة المشاركة).')"><span class="option-letter">ب</span> <span class="font-semibold text-gray-700">المجتمعية.</span></div>
+                    <div class="option-item" onclick="checkAnswer(true, 'إجابة صحيحة! (المودة) مصدر ميمي من الفعل (ودّ)، ويمكن إحلال المصدر الصريح (الود) محلها.')"><span class="option-letter">ج</span> <span class="font-semibold text-gray-700">المودة.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'المستدامة اسم مفعول من الفعل (استدام).')"><span class="option-letter">د</span> <span class="font-semibold text-gray-700">المستدامة.</span></div>
+                </div>
+            </div>
+
+            <div class="bg-accent-light text-primary text-center font-amiri font-bold text-[1.15rem] py-2 px-4 rounded my-4 mx-6 shadow-sm border border-[rgba(212,175,55,0.4)]">
+                «إنك إن طلبت العلم فلن تبلغ منتهاه فتزود منه قدر استطاعتك»
+            </div>
+
+            <div class="question-block">
+                <div class="flex items-start">
+                    <div class="q-badge">51</div>
+                    <p class="q-text">حدد الضمير الذي وقع في محل نصب في المقولة السابقة.</p>
+                </div>
+                <div class="options-grid">
+                    <div class="option-item" onclick="checkAnswer(false, 'الهاء المتصلة بالاسم (منتهاه) تكون في محل جر مضاف إليه.')"><span class="option-letter">أ</span> <span class="font-semibold text-gray-700">الهاء في ( منتهاه ).</span></div>
+                    <div class="option-item" onclick="checkAnswer(true, 'إجابة صحيحة! الكاف المتصلة بالحرف الناسخ (إنّ) تُعرب ضميراً مبنياً في محل نصب اسم إنّ.')"><span class="option-letter">ب</span> <span class="font-semibold text-gray-700">الكاف في (إنك).</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'الكاف المتصلة بالاسم (استطاعتك) في محل جر مضاف إليه.')"><span class="option-letter">ج</span> <span class="font-semibold text-gray-700">الكاف في (استطاعتك).</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'التاء المتصلة بالفعل (طلبت) هي تاء الفاعل في محل رفع.')"><span class="option-letter">د</span> <span class="font-semibold text-gray-700">التاء في ( طلبت ).</span></div>
+                </div>
+            </div>
+
+            <div class="bg-accent-light text-primary text-center font-amiri font-bold text-[1.15rem] py-2 px-4 rounded my-4 mx-6 shadow-sm border border-[rgba(212,175,55,0.4)]">
+                (يعفو عمن أساء - سينال مرضاة الله)
+            </div>
+
+            <div class="question-block">
+                <div class="flex items-start">
+                    <div class="q-badge">52</div>
+                    <p class="q-text">اربط بين الجملتين بأداة شرط جازمة مع بقاء السين في (سينال).</p>
+                </div>
+                <div class="h-16 mt-2 border-2 border-dashed border-gray-300 rounded-lg bg-gray-50 flex justify-center items-center text-gray-400 font-amiri mr-10 shadow-inner answer-area" onclick="showAnswer52()">
+                    (مساحة مخصصة لإجابة الطالب)
+                </div>
+            </div>
+
+            <div class="section-ribbon mt-5 mb-2 !bg-[var(--secondary)]">
+                <i data-lucide="edit" class="w-4 h-4 ml-2 text-accent"></i>
+                <h3 class="text-lg font-bold font-ruqaa mb-0">التعبير:</h3>
+            </div>
+
+            <div class="bg-accent-light text-primary text-center font-amiri font-bold text-[1.15rem] py-2 px-4 rounded my-2 mx-6 shadow-sm border border-[rgba(212,175,55,0.4)]">
+                "المحميات الطبيعية من الكنوز المهمة التي تحقق التنوع البيولوجي للكائنات الحية"
+            </div>
+
+            <div class="question-block">
+                <div class="flex items-start">
+                    <div class="q-badge">53</div>
+                    <p class="q-text">حدد التفصيلة التي يجدر حذفها ؛ لتكون كتابته وثيقة الصلة بالفكرة السابقة.</p>
+                </div>
+                <div class="options-list">
+                    <div class="option-item" onclick="checkAnswer(false, 'هذه التفصيلة تدعم فكرة الحماية وتوفير الملجأ للكائنات.')"><span class="option-letter">أ</span> <span class="font-semibold text-gray-700">تستخدم دائرة الأسماك والحياة البرية الأمريكية مصطلح «الملجأ» للإشارة إلى مناطق حماية الحياة البرية.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'الحد من التأثير البشري يدعم فكرة المحميات والحفاظ عليها.')"><span class="option-letter">ب</span> <span class="font-semibold text-gray-700">يُسمح في بعض الدول بالتأثير فيما لا يزيد عن 3% من المنطقة المحمية لأغراض البحث العلمي.</span></div>
+                    <div class="option-item" onclick="checkAnswer(true, 'إجابة صحيحة! الصيد الجائر يتعارض تماماً مع فكرة المحميات التي تهدف إلى حماية التنوع البيولوجي وليس تدميره.')"><span class="option-letter">ج</span> <span class="font-semibold text-gray-700">يلجأ بعض العلماء لاصطياد الطيور والأسماك كثيرًا للبحث العلمي أو الكسب المالي.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'رعاية المحميات بالهبات يدعم استمراريتها وحمايتها.')"><span class="option-letter">د</span> <span class="font-semibold text-gray-700">يمتلك بعض الأثرياء محميات طبيعية خاصة بينما قدم آخرون هبات لرعايتها والاستفادة </span></div>
+                </div>
+            </div>
+
+            <div class="page-footer">
+                <div class="flex items-center gap-2"><i data-lucide="award" class="w-4 h-4 text-accent"></i> <span>الثانوية العامة</span></div>
+                <div>يتبع</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================== الصفحة 21 ================== -->
+    <div class="a4-page">
+        <div class="page-border"></div>
+        <div class="content-wrapper">
+            <div class="page-header">
+                <div class="flex items-center gap-3">
+                    <div class="bg-primary text-white p-1.5 rounded shadow-sm"><i data-lucide="book-open" class="w-4 h-4"></i></div>
+                    <div class="leading-tight">
+                        <div class="font-bold text-primary text-base">النموذج الاسترشادي الأول</div>
+                    </div>
+                </div>
+                <div class="font-bold text-gray-500 text-sm">الصفحة <span class="text-primary text-lg">21</span></div>
+            </div>
+
+            <div class="passage-card mt-2 py-3 px-4">
+                <p class="passage-text">
+                    "الرياضيات أسهل من الفيزياء ؛ فالرياضيات أداة أساسية في عمل الفيزياء ، والفيزياء تتطلب فقط الفهم العام للرياضيات دون الحاجة إلى إتقانها بشكل عميق. إن الفيزياء تحتاج إلى بعض المفاهيم الرياضية المحددة، مثل المعادلات التفاضلية المثلثية، ولا يتطلب من دارس الفيزياء فهم كيفية استخراج أو إثبات هذه المعادلات، بل هو بحاجة فقط لاستخدام نتائج الرياضيات لحل المسائل الفيزيائية بناءً على شروط المسألة."
+                </p>
+            </div>
+
+            <div class="question-block mt-3">
+                <div class="flex items-start">
+                    <div class="q-badge">54</div>
+                    <p class="q-text">حدد النموذج الأنسب للربط بين الفقرتين السابقتين.</p>
+                </div>
+                <div class="options-grid">
+                    <div class="option-item" onclick="checkAnswer(false, 'لم يورد الكاتب قاعدة مجملة ثم فصل أجزاءها.')"><span class="option-letter">أ</span> <span class="font-semibold text-gray-700">إجمال – تفصيل.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'لم يصف ظاهرة علمية ويفسر أسبابها الطبيعية.')"><span class="option-letter">ب</span> <span class="font-semibold text-gray-700">ظاهرة - تفسير.</span></div>
+                    <div class="option-item" onclick="checkAnswer(false, 'الفقرة لا تعرض مشكلة تبحث عن حل، بل تعرض وجهة نظر.')"><span class="option-letter">ج</span> <span class="font-semibold text-gray-700">مشكلة - حل.</span></div>
+                    <div class="option-item" onclick="checkAnswer(true, 'إجابة صحيحة! بدأ الكاتب بـ (رأي): الرياضيات أسهل من الفيزياء، ثم أتبعه بـ (دليل): وهو أن الفيزياء تحتاج الرياضيات كأداة فقط ولا تتطلب إثباتاتها.')"><span class="option-letter">د</span> <span class="font-semibold text-gray-700">رأى - دليل.</span></div>
+                </div>
+            </div>
+
+            <div class="question-block mt-5">
+                <div class="flex items-start">
+                    <div class="q-badge">55</div>
+                    <p class="q-text leading-relaxed">
+                        اكتب كلمة افتتاحية لندوة للتوعية بتحكيم العقل في التصرف تحت عنوان «عقلك قبل لسانك ويديك».<br>
+                        <span class="text-sm text-gray-500 font-normal">الكلمة من (6)-(8) أسطر في حدود (80) كلمة تتضمن:</span>
+                    </p>
+                </div>
+                <ul class="list-disc list-inside mt-2 pr-12 text-gray-700 font-semibold space-y-1 text-[0.95rem]">
+                    <li>التعريف بالغرض من الندوة - أهميتها - الجمهور المستهدف.</li>
+                    <li>التعريف بالمتحدثين الرئيسيين في الندوة أو (صفتهم).</li>
+                    <li>عبارات ترحيبية تستثير اهتمام الجمهور لمتابعة الندوة (يشمل ذلك استشهادات أو أقوالا مأثورة).</li>
+                </ul>
+                <div class="h-40 mt-4 border-2 border-dashed border-gray-300 rounded-lg bg-gray-50 flex justify-center items-center text-gray-400 font-amiri mr-10 shadow-inner answer-area" onclick="showAnswer55()">
+                    (مساحة مخصصة لكتابة موضوع التعبير)
+                </div>
+            </div>
+
+            <!-- Outro Section -->
+            <div class="mt-auto text-center pt-4 pb-2 relative">
+                <div class="absolute left-1/2 top-0 transform -translate-x-1/2 w-24 h-[2px] bg-accent"></div>
+                <p class="text-2xl font-bold text-primary font-ruqaa mt-3 mb-1">انتهت الأسئلة</p>
+                <p class="text-accent-dark font-bold text-sm">مع خالص التمنيات بالنجاح والتوفيق</p>
+            </div>
+
+            <div class="page-footer">
+                <div class="flex items-center gap-2"><i data-lucide="award" class="w-4 h-4 text-accent"></i> <span>الثانوية العامة</span></div>
+                <div>نهاية النموذج</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        function checkAnswer(isCorrect, message) {
+            const popup = document.getElementById('feedbackPopup');
+            const popupIcon = document.getElementById('popupIcon');
+            const popupTitle = document.getElementById('popupTitle');
+            const popupMessage = document.getElementById('popupMessage');
+
+            if (isCorrect) {
+                popupIcon.innerHTML = '<i data-lucide="check-circle" class="correct-icon"></i>';
+                popupTitle.textContent = 'إجابة صحيحة!';
+                popupTitle.className = 'text-2xl font-bold mb-2 text-green-600';
+            } else {
+                popupIcon.innerHTML = '<i data-lucide="x-circle" class="wrong-icon"></i>';
+                popupTitle.textContent = 'إجابة خاطئة';
+                popupTitle.className = 'text-2xl font-bold mb-2 text-red-600';
+            }
+
+            popupMessage.textContent = message;
+            lucide.createIcons();
+            popup.classList.add('show');
+        }
+
+        function showAnswer7() {
+            const popup = document.getElementById('feedbackPopup');
+            const popupIcon = document.getElementById('popupIcon');
+            const popupTitle = document.getElementById('popupTitle');
+            const popupMessage = document.getElementById('popupMessage');
+
+            popupIcon.innerHTML = '<i data-lucide="info" class="text-blue-500 w-12 h-12 mx-auto mb-4"></i>';
+            popupTitle.textContent = 'الإجابة النموذجية (السؤال 7)';
+            popupTitle.className = 'text-2xl font-bold mb-2 text-blue-600';
+            popupMessage.innerHTML = `
+                <ol class="list-decimal text-right list-inside space-y-2">
+                    <li>رفعت صحيفة (ذا نيويورك تايمز) دعوى قضائية ضد شركة التكنولوجيا العملاقة (مايكروسوفت)، وشركة (أوبن إيه آي).</li>
+                    <li>ادعت الصحيفة على الشركتين أنهما نسختا الملايين من مقالاتها.</li>
+                    <li>النماذج اللغوية الكبيرة باتت تنافس الصحيفة فيما تقدم من مواد صحفية.</li>
+                    <li>يُنتج النموذج (جي بي تي 4) العديد من الفقرات المنقولة من مقالات الصحيفة نقلا حرفيا أو يكاد.</li>
+                </ol>
+            `;
+            
+            lucide.createIcons();
+            popup.classList.add('show');
+        }
+
+        function showAnswer14() {
+            const popup = document.getElementById('feedbackPopup');
+            const popupIcon = document.getElementById('popupIcon');
+            const popupTitle = document.getElementById('popupTitle');
+            const popupMessage = document.getElementById('popupMessage');
+
+            popupIcon.innerHTML = '<i data-lucide="info" class="text-blue-500 w-12 h-12 mx-auto mb-4"></i>';
+            popupTitle.textContent = 'الإجابة النموذجية (السؤال 14)';
+            popupTitle.className = 'text-2xl font-bold mb-2 text-blue-600';
+            popupMessage.innerHTML = `
+                <ol class="list-decimal text-right list-inside space-y-2">
+                    <li>مجلس الصبي على حصير عليه بساط قديم، بينما مجلس أخيه الشيخ على حصير وبساط وفراش وحشية.</li>
+                    <li>مجلس الصبي هو نفسه مكان نومه ليلاً، بينما مجلس الشيخ مخصص لجلوسه مع أصدقائه.</li>
+                    <li>الصبي يسند ظهره إلى الحائط، بينما الفتى الشيخ وأصدقاؤه يسندون ظهورهم إلى الوسائد.</li>
+                    <li>مجلس الصبي يعكس البساطة والتقشف، بينما مجلس أخيه الشيخ يعكس التكريم والراحة.</li>
+                </ol>
+            `;
+            
+            lucide.createIcons();
+            popup.classList.add('show');
+        }
+
+        function showAnswer52() {
+            const popup = document.getElementById('feedbackPopup');
+            const popupIcon = document.getElementById('popupIcon');
+            const popupTitle = document.getElementById('popupTitle');
+            const popupMessage = document.getElementById('popupMessage');
+
+            popupIcon.innerHTML = '<i data-lucide="info" class="text-blue-500 w-12 h-12 mx-auto mb-4"></i>';
+            popupTitle.textContent = 'الإجابة النموذجية (السؤال 52)';
+            popupTitle.className = 'text-2xl font-bold mb-2 text-blue-600';
+            popupMessage.innerHTML = '<strong>مَن يعفُ عمن أساء فسينال مرضاة الله.</strong><br><br><span class="text-base text-gray-500">التعليل: جُزم فعل الشرط بحذف حرف العلة (يعفُ)، واقترن جواب الشرط بالفاء وجوباً لوجود (السين) في (فسينال).</span>';
+            
+            lucide.createIcons();
+            popup.classList.add('show');
+        }
+
+        function showAnswer55() {
+            const popup = document.getElementById('feedbackPopup');
+            const popupIcon = document.getElementById('popupIcon');
+            const popupTitle = document.getElementById('popupTitle');
+            const popupMessage = document.getElementById('popupMessage');
+
+            popupIcon.innerHTML = '<i data-lucide="info" class="text-blue-500 w-12 h-12 mx-auto mb-4"></i>';
+            popupTitle.textContent = 'الإجابة النموذجية (السؤال 55)';
+            popupTitle.className = 'text-2xl font-bold mb-2 text-blue-600';
+            popupMessage.innerHTML = `
+                <div class="text-right text-lg leading-relaxed text-gray-800 font-amiri text-justify">
+                    أهلاً وسهلاً بكم ضيوفنا الكرام وشبابنا الواعد في رحاب ندوتنا التثقيفية: <strong>«عقلك قبل لسانك ويديك»</strong>. نجتمع اليوم لنسلط الضوء على قضية جوهرية تتمثل في أهمية تحكيم العقل وضبط الانفعالات قبل النطق أو الفعل؛ فكما يُقال: <em>"لسان العاقل وراء قلبه، وقلب الأحمق وراء لسانه"</em>. وتبرز أهمية هذه الندوة في كونها تستهدفكم أنتم شبابنا، عماد المستقبل؛ لنشر ثقافة التروي والحكمة في بناء علاقات إنسانية سوية. ويسعدنا أن نستضيف اليوم نخبة من كبار أساتذة علم النفس والاجتماع، ليشاركونا رؤاهم العميقة وتوجيهاتهم القيمة. نتمنى لكم وقتاً مثمراً.
+                </div>
+            `;
+            
+            lucide.createIcons();
+            popup.classList.add('show');
+        }
+
+        function closePopup() {
+            document.getElementById('feedbackPopup').classList.remove('show');
+        }
+        
+        // Close popup when clicking outside of it
+        document.getElementById('feedbackPopup').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closePopup();
+            }
+        });
+    </script>
+</body>
+</html>
