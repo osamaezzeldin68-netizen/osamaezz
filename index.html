@@ -50,6 +50,21 @@
             overflow: hidden; /* Prevents absolutely any overflow */
         }
 
+        /* Watermark Styling */
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-family: 'Aref Ruqaa', serif;
+            font-size: 140px;
+            color: rgba(15, 44, 89, 0.04); /* Very faint navy blue */
+            white-space: nowrap;
+            pointer-events: none; /* Allows clicking through it */
+            z-index: 0; /* Keeps it behind the text */
+            user-select: none; /* Prevents text selection of the watermark */
+        }
+
         /* Inner Content Border */
         .page-border {
             position: absolute;
@@ -64,7 +79,7 @@
 
         .content-wrapper {
             position: relative;
-            z-index: 1;
+            z-index: 1; /* Ensures content is above watermark and borders */
             flex-grow: 1;
             display: flex;
             flex-direction: column;
@@ -95,7 +110,7 @@
 
         /* Text Elements (Compact & Precise) */
         .passage-card {
-            background-color: #ffffff;
+            background-color: rgba(255, 255, 255, 0.85); /* Slightly transparent to show watermark softly */
             border-right: 4px solid var(--accent);
             border-left: 1px solid #e2e8f0;
             border-top: 1px solid #e2e8f0;
@@ -167,7 +182,7 @@
         }
 
         .option-item {
-            background: white;
+            background: rgba(255, 255, 255, 0.9);
             border: 1px solid #cbd5e1;
             border-radius: 6px;
             padding: 6px 10px;
@@ -231,7 +246,7 @@
         .poetry-separator { color: var(--accent); font-size: 1rem; user-select: none; }
 
         .quote-box {
-            background-color: #f8fafc;
+            background-color: rgba(248, 250, 252, 0.9);
             border-right: 4px solid var(--secondary);
             padding: 10px 14px;
             border-radius: 6px;
@@ -321,7 +336,61 @@
         }
         
         .answer-area:hover {
-            background-color: #e2e8f0;
+            background-color: rgba(226, 232, 240, 0.9);
+        }
+
+        /* --- التوافق مع شاشات الموبايل (Responsive Design) --- */
+        @media screen and (max-width: 850px) {
+            body {
+                padding: 10px;
+            }
+            .a4-page {
+                width: 100%;
+                height: auto; /* السماح بتمدد الصفحة لتستوعب النص بالكامل */
+                max-height: none;
+                padding: 15px;
+                border-radius: 8px;
+            }
+            .page-border {
+                top: 6px; left: 6px; right: 6px; bottom: 6px;
+            }
+            .content-wrapper {
+                padding: 0;
+            }
+            .watermark {
+                font-size: 15vw; /* ضبط حجم العلامة المائية للشاشات الصغيرة */
+            }
+            .text-center h1.font-ruqaa {
+                font-size: 1.8rem;
+            }
+            .text-center h2 {
+                font-size: 1rem;
+                line-height: 1.6;
+            }
+            .options-grid {
+                grid-template-columns: 1fr; /* ترتيب الخيارات عمودياً لمنع التكدس */
+                margin-right: 0;
+            }
+            .options-list {
+                margin-right: 0;
+            }
+            .poetry-verse {
+                flex-direction: column;
+                gap: 6px;
+                font-size: 1.1rem;
+            }
+            .poetry-verse span {
+                width: 100%;
+            }
+            .poetry-separator {
+                display: none; /* إخفاء الفاصل النجمي لتنسيق أفضل على الموبايل */
+            }
+            .passage-card {
+                padding: 12px 10px;
+            }
+            .popup-content {
+                padding: 1.5rem;
+            }
         }
 
         /* Print Settings */
@@ -336,7 +405,12 @@
                 page-break-inside: avoid;
             }
             @page { margin: 0; size: A4 portrait; }
-            .popup-overlay { display: none !important; }
+            .popup-overlay, .floating-hint { display: none !important; }
+            .watermark {
+                 color: rgba(15, 44, 89, 0.06); 
+                 -webkit-print-color-adjust: exact;
+                 print-color-adjust: exact;
+            }
         }
     </style>
 </head>
@@ -354,6 +428,7 @@
 
     <!-- ================== الصفحة 1 ================== -->
     <div class="a4-page">
+        <div class="watermark">أ. أسامة عزالدين</div>
         <div class="page-border"></div>
         <div class="content-wrapper">
             <div class="page-header">
@@ -409,6 +484,7 @@
 
     <!-- ================== الصفحة 2 ================== -->
     <div class="a4-page">
+        <div class="watermark">أ. أسامة عزالدين</div>
         <div class="page-border"></div>
         <div class="content-wrapper">
             <div class="page-header">
@@ -475,6 +551,7 @@
 
     <!-- ================== الصفحة 3 ================== -->
     <div class="a4-page">
+        <div class="watermark">أ. أسامة عزالدين</div>
         <div class="page-border"></div>
         <div class="content-wrapper">
             <div class="page-header">
@@ -545,6 +622,7 @@
 
     <!-- ================== الصفحة 4 ================== -->
     <div class="a4-page">
+        <div class="watermark">أ. أسامة عزالدين</div>
         <div class="page-border"></div>
         <div class="content-wrapper">
             <div class="page-header">
@@ -600,6 +678,7 @@
 
     <!-- ================== الصفحة 5 ================== -->
     <div class="a4-page">
+        <div class="watermark">أ. أسامة عزالدين</div>
         <div class="page-border"></div>
         <div class="content-wrapper">
             <div class="page-header">
@@ -673,6 +752,7 @@
 
     <!-- ================== الصفحة 6 ================== -->
     <div class="a4-page">
+        <div class="watermark">أ. أسامة عزالدين</div>
         <div class="page-border"></div>
         <div class="content-wrapper">
             <div class="page-header">
@@ -723,6 +803,7 @@
 
     <!-- ================== الصفحة 7 ================== -->
     <div class="a4-page">
+        <div class="watermark">أ. أسامة عزالدين</div>
         <div class="page-border"></div>
         <div class="content-wrapper">
             <div class="page-header">
@@ -760,6 +841,7 @@
 
     <!-- ================== الصفحة 8 ================== -->
     <div class="a4-page">
+        <div class="watermark">أ. أسامة عزالدين</div>
         <div class="page-border"></div>
         <div class="content-wrapper">
             <div class="page-header">
@@ -839,6 +921,7 @@
 
     <!-- ================== الصفحة 9 ================== -->
     <div class="a4-page">
+        <div class="watermark">أ. أسامة عزالدين</div>
         <div class="page-border"></div>
         <div class="content-wrapper">
             <div class="page-header">
@@ -912,6 +995,7 @@
 
     <!-- ================== الصفحة 10 ================== -->
     <div class="a4-page">
+        <div class="watermark">أ. أسامة عزالدين</div>
         <div class="page-border"></div>
         <div class="content-wrapper">
             <div class="page-header">
@@ -984,6 +1068,7 @@
 
     <!-- ================== الصفحة 11 ================== -->
     <div class="a4-page">
+        <div class="watermark">أ. أسامة عزالدين</div>
         <div class="page-border"></div>
         <div class="content-wrapper">
             <div class="page-header">
@@ -1049,6 +1134,7 @@
 
     <!-- ================== الصفحة 12 ================== -->
     <div class="a4-page">
+        <div class="watermark">أ. أسامة عزالدين</div>
         <div class="page-border"></div>
         <div class="content-wrapper">
             <div class="page-header">
@@ -1112,6 +1198,7 @@
 
     <!-- ================== الصفحة 13 ================== -->
     <div class="a4-page">
+        <div class="watermark">أ. أسامة عزالدين</div>
         <div class="page-border"></div>
         <div class="content-wrapper">
             <div class="page-header">
@@ -1169,6 +1256,7 @@
 
     <!-- ================== الصفحة 14 ================== -->
     <div class="a4-page">
+        <div class="watermark">أ. أسامة عزالدين</div>
         <div class="page-border"></div>
         <div class="content-wrapper">
             <div class="page-header">
@@ -1242,6 +1330,7 @@
 
     <!-- ================== الصفحة 15 ================== -->
     <div class="a4-page">
+        <div class="watermark">أ. أسامة عزالدين</div>
         <div class="page-border"></div>
         <div class="content-wrapper">
             <div class="page-header">
@@ -1313,6 +1402,7 @@
 
     <!-- ================== الصفحة 16 ================== -->
     <div class="a4-page">
+        <div class="watermark">أ. أسامة عزالدين</div>
         <div class="page-border"></div>
         <div class="content-wrapper">
             <div class="page-header">
@@ -1405,6 +1495,7 @@
 
     <!-- ================== الصفحة 17 ================== -->
     <div class="a4-page">
+        <div class="watermark">أ. أسامة عزالدين</div>
         <div class="page-border"></div>
         <div class="content-wrapper">
             <div class="page-header">
@@ -1494,6 +1585,7 @@
 
     <!-- ================== الصفحة 18 ================== -->
     <div class="a4-page">
+        <div class="watermark">أ. أسامة عزالدين</div>
         <div class="page-border"></div>
         <div class="content-wrapper">
             <div class="page-header">
@@ -1572,6 +1664,7 @@
 
     <!-- ================== الصفحة 19 ================== -->
     <div class="a4-page">
+        <div class="watermark">أ. أسامة عزالدين</div>
         <div class="page-border"></div>
         <div class="content-wrapper">
             <div class="page-header">
@@ -1653,6 +1746,7 @@
 
     <!-- ================== الصفحة 20 ================== -->
     <div class="a4-page">
+        <div class="watermark">أ. أسامة عزالدين</div>
         <div class="page-border"></div>
         <div class="content-wrapper">
             <div class="page-header">
@@ -1744,6 +1838,7 @@
 
     <!-- ================== الصفحة 21 ================== -->
     <div class="a4-page">
+        <div class="watermark">أ. أسامة عزالدين</div>
         <div class="page-border"></div>
         <div class="content-wrapper">
             <div class="page-header">
@@ -1805,6 +1900,15 @@
                 <div>نهاية النموذج</div>
             </div>
         </div>
+    </div>
+
+    <!-- التنبيه العائم للمستخدم -->
+    <div class="floating-hint" id="interactiveHint">
+        <i data-lucide="mouse-pointer-click" class="w-6 h-6 icon-hint"></i>
+        <span>نموذج تفاعلي: اضغط على الخيارات أو مساحة الإجابة لمعرفة الحل والتعليل!</span>
+        <button class="close-hint" onclick="document.getElementById('interactiveHint').style.opacity='0'; setTimeout(()=>document.getElementById('interactiveHint').style.display='none', 400);" title="إغلاق التنبيه">
+            <i data-lucide="x-circle" class="w-5 h-5"></i>
+        </button>
     </div>
 
     <script>
